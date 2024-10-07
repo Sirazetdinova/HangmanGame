@@ -1,12 +1,12 @@
 package backend.academy.validator;
 
-import Hangman.constant.Language;
-import Hangman.dialogs.common.AbstractLetterValidator;
-import Hangman.dialogs.common.Validator;
-import Hangman.dialogs.letterdialog.en.EnLetterValidator;
-import Hangman.dialogs.letterdialog.ru.RuLetterValidator;
-import Hangman.exception.EmptyWordListException;
-import Hangman.exception.InvalidWordException;
+import backend.academy.constant.Language;
+import backend.academy.dialogs.common.AbstractLetterValidator;
+import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.letterdialog.en.EnLetterValidator;
+import backend.academy.dialogs.letterdialog.ru.RuLetterValidator;
+import backend.academy.exception.EmptyWordListException;
+import backend.academy.exception.InvalidWordException;
 import java.util.List;
 
 public class WordRepositoryValidator implements Validator<List<String>> {

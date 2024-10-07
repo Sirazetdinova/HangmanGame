@@ -1,9 +1,9 @@
 package backend.academy.dialogs.minmaxdialog;
 
-import Hangman.dialogs.common.MoreCharactersInputException;
-import Hangman.dialogs.common.Validator;
-import Hangman.dialogs.minmaxdialog.exception.NotDigitException;
-import Hangman.dialogs.minmaxdialog.exception.NumberOutOfRangeException;
+import backend.academy.dialogs.common.MoreCharactersInputException;
+import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.minmaxdialog.exception.NotDigitException;
+import backend.academy.dialogs.minmaxdialog.exception.NumberOutOfRangeException;
 
 public class MinMaxValidator implements Validator<String> {
     private final int min;

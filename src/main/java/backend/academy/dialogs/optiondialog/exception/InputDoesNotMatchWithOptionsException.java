@@ -1,3 +1,4 @@
 package backend.academy.dialogs.optiondialog.exception;
 
-public class InputDoesNotMatchWithOptionsException extends RuntimeException {}
+public class InputDoesNotMatchWithOptionsException extends RuntimeException {
+}

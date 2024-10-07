@@ -1,7 +1,7 @@
 package backend.academy.dialogs.common;
 
-import Hangman.dialogs.letterdialog.exception.NotLetterException;
-import Hangman.dialogs.letterdialog.exception.NotLetterInLanguageException;
+import backend.academy.dialogs.letterdialog.exception.NotLetterException;
+import backend.academy.dialogs.letterdialog.exception.NotLetterInLanguageException;
 import java.lang.Character.UnicodeBlock;
 import java.util.ArrayList;
 import java.util.List;

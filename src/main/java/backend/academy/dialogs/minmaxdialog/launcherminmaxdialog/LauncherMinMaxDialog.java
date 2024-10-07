@@ -1,8 +1,8 @@
 package backend.academy.dialogs.minmaxdialog.launcherminmaxdialog;
 
-import Hangman.dialogs.common.Printer;
-import Hangman.dialogs.dialogcenter.DialogCenter;
-import Hangman.dialogs.minmaxdialog.MinMaxDialog;
+import backend.academy.dialogs.common.Printer;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.minmaxdialog.MinMaxDialog;
 
 public class LauncherMinMaxDialog extends MinMaxDialog {
     public LauncherMinMaxDialog(Printer infoPrinter, Printer errorPrinter, DialogCenter dialogCenter, String title, int max, int min) {

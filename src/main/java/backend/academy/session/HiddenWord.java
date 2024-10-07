@@ -1,6 +1,6 @@
 package backend.academy.session;
 
-import Hangman.exception.NoSuchLetterException;
+import backend.academy.exception.NoSuchLetterException;
 
 public class HiddenWord {
     private static final String PLACEHOLDER = "_";

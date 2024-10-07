@@ -1,8 +1,8 @@
 package backend.academy.dialogs.difficultdialog;
 
-import Hangman.dialogs.common.Printer;
-import Hangman.dialogs.dialogcenter.DialogCenter;
-import Hangman.dialogs.optiondialog.OptionDialog;
+import backend.academy.dialogs.common.Printer;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.optiondialog.OptionDialog;
 
 public class DifficultDialog extends OptionDialog {
     public DifficultDialog(Printer infoPrinter, Printer errorPrinter, DialogCenter dialogCenter, String title, String... options) {
@@ -12,4 +12,5 @@ public class DifficultDialog extends OptionDialog {
     public DifficultDialog(Printer printer, String title, DialogCenter dialogCenter, String... options) {
         super(printer, title, new DifficultMessageMapper(dialogCenter), options);
     }
+
 }

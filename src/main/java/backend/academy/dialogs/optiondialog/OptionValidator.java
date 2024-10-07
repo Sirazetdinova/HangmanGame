@@ -1,7 +1,7 @@
 package backend.academy.dialogs.optiondialog;
 
-import Hangman.dialogs.common.Validator;
-import Hangman.dialogs.optiondialog.exception.InputDoesNotMatchWithOptionsException;
+import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.optiondialog.exception.InputDoesNotMatchWithOptionsException;
 import java.util.List;
 
 public class OptionValidator implements Validator<String> {

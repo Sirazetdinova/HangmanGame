@@ -1,26 +1,13 @@
 package backend.academy.dialogs.letterdialog;
 
-import Hangman.dialogs.common.MoreCharactersInputException;
-import Hangman.dialogs.common.messagemapper.AbstractMessageMapper;
-import Hangman.dialogs.common.messagemapper.MessageMapper;
-import Hangman.dialogs.dialogcenter.DialogCenter;
-import Hangman.dialogs.letterdialog.exception.NotLetterException;
-import Hangman.dialogs.letterdialog.exception.NotLetterInLanguageException;
+import backend.academy.dialogs.common.MoreCharactersInputException;
+import backend.academy.dialogs.common.messagemapper.AbstractMessageMapper;
+import backend.academy.dialogs.common.messagemapper.MessageMapper;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.letterdialog.exception.NotLetterException;
+import backend.academy.dialogs.letterdialog.exception.NotLetterInLanguageException;
 
 public class LetterMessageMapper extends AbstractMessageMapper implements MessageMapper {
-    private enum Key {
-        ALLOWED_ONLY_LETTERS("allowed_only_letters"),
-        LETTER_NOT_IN_LANGUAGE("letter_not_in_language"),
-        MORE_LETTERS("more_letters");
-
-        public final String section = "LetterMessageMapper";
-        public final String key;
-
-        Key(String key) {
-            this.key = key;
-        }
-    }
-
     public LetterMessageMapper(DialogCenter dialogCenter) {
         super(dialogCenter);
     }
@@ -36,5 +23,18 @@ public class LetterMessageMapper extends AbstractMessageMapper implements Messag
         }
 
         throw new IllegalArgumentException("Illegal exception: " + e);
+    }
+
+    private enum Key {
+        ALLOWED_ONLY_LETTERS("allowed_only_letters"),
+        LETTER_NOT_IN_LANGUAGE("letter_not_in_language"),
+        MORE_LETTERS("more_letters");
+
+        public final String section = "LetterMessageMapper";
+        public final String key;
+
+        Key(String key) {
+            this.key = key;
+        }
     }
 }

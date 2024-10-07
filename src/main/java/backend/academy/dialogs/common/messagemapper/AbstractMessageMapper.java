@@ -1,6 +1,6 @@
 package backend.academy.dialogs.common.messagemapper;
 
-import Hangman.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
 
 public abstract class AbstractMessageMapper {
     protected final DialogCenter dialogCenter;

@@ -6,7 +6,7 @@ public class InvalidLanguageException extends RuntimeException {
     private final String invalidLanguage;
 
     public InvalidLanguageException(String invalidLanguage) {
-        super(MESSAGE.formatted(invalidLanguage));
+        super(MESSAGE.format(invalidLanguage));
         this.invalidLanguage = invalidLanguage;
     }
 

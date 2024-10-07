@@ -1,10 +1,10 @@
 package backend.academy.repository;
 
-import Hangman.constant.Language;
-import Hangman.exception.OpenWordsFileException;
-import Hangman.exception.ReadWordsFileException;
-import Hangman.session.HangmanSession.Category;
-import Hangman.validator.WordRepositoryValidator;
+import backend.academy.constant.Language;
+import backend.academy.exception.OpenWordsFileException;
+import backend.academy.exception.ReadWordsFileException;
+import backend.academy.session.HangmanSession.Category;
+import backend.academy.validator.WordRepositoryValidator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,9 +16,16 @@ public class FileWordRepository implements WordRepository {
     private final String filename;
     private List<String> words;
 
+
     public FileWordRepository(String directory, String filenameTemplate, Language language, Category category) {
-        this.filename = String.format("/%s/%s", directory, filenameTemplate.formatted(category.name().toLowerCase(), language.name().toLowerCase()));
+        this.filename = String.format("/%s/%s/%s.txt", directory, language.name().toLowerCase(), category.name().toLowerCase());
         this.wordRepositoryValidator = new WordRepositoryValidator(language);
+    }
+
+    @Override
+    public String toString() {
+        return this.filename;
+
     }
 
     @Override

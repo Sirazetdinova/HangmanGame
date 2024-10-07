@@ -1,22 +1,22 @@
 package backend.academy;
 
-import backend.academy.dialogs.common.dialog.Dialog;
+import backend.academy.constant.Language;
 import backend.academy.dialogs.common.Printer;
+import backend.academy.dialogs.common.dialog.Dialog;
 import backend.academy.dialogs.dialogcenter.DialogCenter;
 import backend.academy.dialogs.dialogcenter.FileDialogCenter;
 import backend.academy.dialogs.dialogcenter.exception.UnableGetDialogCenterException;
 import backend.academy.dialogs.languagedialog.LanguageDialog;
 import backend.academy.display.Display;
 import backend.academy.display.InfoDisplay;
-import backend.academy.messagecenter.exception.UnableGetMessageCenterException;
 import backend.academy.launcher.HangmanGameLauncher;
 import backend.academy.messagecenter.FileMessageCenter;
 import backend.academy.messagecenter.MessageCenter;
-import backend.academy.repository.FileWordRepository;
-import backend.academy.repository.WordRepository;
-import backend.academy.constant.Language;
+import backend.academy.messagecenter.exception.UnableGetMessageCenterException;
+
 
 import lombok.experimental.UtilityClass;
+
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.StringJoiner;
@@ -41,9 +41,7 @@ public class Main {
         DialogCenter dialogCenter = dialogCenterOptional.get();
         MessageCenter messageCenter = messageCenterOptional.get();
 
-        // WordRepository wordRepository = new FileWordRepository("words", "words_%s.txt", language);
-        WordRepository wordRepository = new FileWordRepository("words", "%s_%s", language, category);
-        HangmanGameLauncher hangmanGameLauncher = new HangmanGameLauncher(wordRepository, display, language, messageCenter, dialogCenter);
+        HangmanGameLauncher hangmanGameLauncher = new HangmanGameLauncher(display, language, messageCenter, dialogCenter);
         hangmanGameLauncher.start();
     }
 
@@ -82,6 +80,6 @@ public class Main {
     private static String getLanguageMessage() {
         StringJoiner stringJoiner = new StringJoiner(", ");
         Arrays.stream(Language.values()).map(Enum::name).forEach(stringJoiner::add);
-        return "Choose language: %s".formatted(stringJoiner.toString());
+        return "Choose language: %s".format(stringJoiner.toString());
     }
 }

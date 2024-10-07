@@ -1,6 +1,6 @@
 package backend.academy.dialogs.languagedialog;
 
-import Hangman.dialogs.common.messagemapper.AbstractOptionMessageMapper;
+import backend.academy.dialogs.common.messagemapper.AbstractOptionMessageMapper;
 
 public class LanguageMessageMapper extends AbstractOptionMessageMapper {
     private static final String INVALID_LANGUAGE = "Invalid language";

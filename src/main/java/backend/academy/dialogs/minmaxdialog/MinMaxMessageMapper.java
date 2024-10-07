@@ -1,22 +1,9 @@
 package backend.academy.dialogs.minmaxdialog;
 
-import Hangman.dialogs.common.messagemapper.AbstractMinMaxMessageMapper;
-import Hangman.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.common.messagemapper.AbstractMinMaxMessageMapper;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
 
 public class MinMaxMessageMapper extends AbstractMinMaxMessageMapper {
-    private enum Key {
-        MORE_CHARACTERS("more_characters"),
-        NOT_DIGIT("not_digit"),
-        NUMBER_OUT_OF_RANGE("number_out_of_range");
-
-        public final String section = "MinMaxMessageMapper";
-        public final String key;
-
-        Key(String key) {
-            this.key = key;
-        }
-    }
-
     public MinMaxMessageMapper(DialogCenter dialogCenter) {
         super(dialogCenter);
     }
@@ -34,5 +21,18 @@ public class MinMaxMessageMapper extends AbstractMinMaxMessageMapper {
     @Override
     protected String messageNumberOutOfRangeException() {
         return dialogCenter.get(Key.NUMBER_OUT_OF_RANGE.section, Key.NUMBER_OUT_OF_RANGE.key);
+    }
+
+    private enum Key {
+        MORE_CHARACTERS("more_characters"),
+        NOT_DIGIT("not_digit"),
+        NUMBER_OUT_OF_RANGE("number_out_of_range");
+
+        public final String section = "MinMaxMessageMapper";
+        public final String key;
+
+        Key(String key) {
+            this.key = key;
+        }
     }
 }

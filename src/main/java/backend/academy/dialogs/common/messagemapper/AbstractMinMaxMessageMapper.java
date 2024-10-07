@@ -1,9 +1,9 @@
 package backend.academy.dialogs.common.messagemapper;
 
-import Hangman.dialogs.common.MoreCharactersInputException;
-import Hangman.dialogs.dialogcenter.DialogCenter;
-import Hangman.dialogs.minmaxdialog.exception.NotDigitException;
-import Hangman.dialogs.minmaxdialog.exception.NumberOutOfRangeException;
+import backend.academy.dialogs.common.MoreCharactersInputException;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.minmaxdialog.exception.NotDigitException;
+import backend.academy.dialogs.minmaxdialog.exception.NumberOutOfRangeException;
 
 
 public abstract class AbstractMinMaxMessageMapper extends AbstractMessageMapper implements MessageMapper {
@@ -24,6 +24,8 @@ public abstract class AbstractMinMaxMessageMapper extends AbstractMessageMapper 
     }
 
     protected abstract String messageMoreCharactersInputException();
+
     protected abstract String messageNotDigitException();
+
     protected abstract String messageNumberOutOfRangeException();
 }

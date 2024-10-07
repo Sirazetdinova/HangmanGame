@@ -1,9 +1,18 @@
 package backend.academy.dialogs.difficultdialog;
 
-import Hangman.dialogs.common.messagemapper.AbstractOptionMessageMapper;
-import Hangman.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.common.messagemapper.AbstractOptionMessageMapper;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
 
 public class DifficultMessageMapper extends AbstractOptionMessageMapper {
+    public DifficultMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    protected String messageInputDoesNotMatchWithOptions() {
+        return dialogCenter.get(Key.INVALID_DIFFICULT.section, Key.INVALID_DIFFICULT.key);
+    }
+
     private enum Key {
         INVALID_DIFFICULT("invalid_difficult");
 
@@ -13,14 +22,5 @@ public class DifficultMessageMapper extends AbstractOptionMessageMapper {
         Key(String key) {
             this.key = key;
         }
-    }
-
-    public DifficultMessageMapper(DialogCenter dialogCenter) {
-        super(dialogCenter);
-    }
-
-    @Override
-    protected String messageInputDoesNotMatchWithOptions() {
-        return dialogCenter.get(Key.INVALID_DIFFICULT.section, Key.INVALID_DIFFICULT.key);
     }
 }

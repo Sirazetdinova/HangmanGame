@@ -1,9 +1,18 @@
 package backend.academy.dialogs.optiondialog;
 
-import Hangman.dialogs.common.messagemapper.AbstractOptionMessageMapper;
-import Hangman.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.common.messagemapper.AbstractOptionMessageMapper;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
 
 public class OptionMessageMapper extends AbstractOptionMessageMapper {
+    public OptionMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    protected String messageInputDoesNotMatchWithOptions() {
+        return dialogCenter.get(Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.section, Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.key);
+    }
+
     private enum Key {
         INPUT_DOES_NOT_MATCH_WITH_OPTIONS("input_does_not_match_with_options");
 
@@ -13,14 +22,5 @@ public class OptionMessageMapper extends AbstractOptionMessageMapper {
         Key(String key) {
             this.key = key;
         }
-    }
-
-    public OptionMessageMapper(DialogCenter dialogCenter) {
-        super(dialogCenter);
-    }
-
-    @Override
-    protected String messageInputDoesNotMatchWithOptions() {
-        return dialogCenter.get(Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.section, Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.key);
     }
 }

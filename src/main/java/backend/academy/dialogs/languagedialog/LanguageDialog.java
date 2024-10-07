@@ -1,8 +1,8 @@
 package backend.academy.dialogs.languagedialog;
 
-import Hangman.constant.Language;
-import Hangman.dialogs.common.Printer;
-import Hangman.dialogs.optiondialog.OptionDialog;
+import backend.academy.constant.Language;
+import backend.academy.dialogs.common.Printer;
+import backend.academy.dialogs.optiondialog.OptionDialog;
 import java.util.Arrays;
 
 public class LanguageDialog extends OptionDialog {

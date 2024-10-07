@@ -1,20 +1,20 @@
 package backend.academy.messagecenter;
 
-import Hangman.constant.Language;
-import Hangman.messagecenter.exception.MessageNotFoundException;
-import Hangman.messagecenter.exception.UnableGetMessageCenterException;
-import Hangman.util.inireader.IniReader;
-import Hangman.util.inireader.exception.IniValueNotFoundException;
-import Hangman.util.inireader.exception.OpenIniFileException;
-import Hangman.util.inireader.exception.ReadIniFileException;
+import backend.academy.constant.Language;
+import backend.academy.messagecenter.exception.MessageNotFoundException;
+import backend.academy.messagecenter.exception.UnableGetMessageCenterException;
+import backend.academy.util.inireader.IniReader;
+import backend.academy.util.inireader.exception.IniValueNotFoundException;
+import backend.academy.util.inireader.exception.OpenIniFileException;
+import backend.academy.util.inireader.exception.ReadIniFileException;
 
 public class FileMessageCenter implements MessageCenter {
     private final IniReader iniReader;
 
     public FileMessageCenter(String directory, String filenameTemplate, Language language) {
         String languageName = language.name().toLowerCase();
-        String filename = filenameTemplate.formatted(languageName);
-        String iniFilename = String.format("%s/%s", directory.formatted(languageName), filename);
+        String filename = filenameTemplate.format(languageName);
+        String iniFilename = String.format("%s/%s", directory.format(languageName), filename);
         this.iniReader = getIniReader(iniFilename);
     }
 

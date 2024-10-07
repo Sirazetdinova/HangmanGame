@@ -1,8 +1,8 @@
 package backend.academy.dialogs.common.dialog;
 
-import Hangman.dialogs.common.Printer;
-import Hangman.dialogs.common.Validator;
-import Hangman.dialogs.common.messagemapper.MessageMapper;
+import backend.academy.dialogs.common.Printer;
+import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.common.messagemapper.MessageMapper;
 import java.util.Scanner;
 
 public abstract class AbstractDialog implements Dialog {

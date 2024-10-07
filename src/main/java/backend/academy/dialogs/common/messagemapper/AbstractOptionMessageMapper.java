@@ -1,7 +1,7 @@
 package backend.academy.dialogs.common.messagemapper;
 
-import Hangman.dialogs.dialogcenter.DialogCenter;
-import Hangman.dialogs.optiondialog.exception.InputDoesNotMatchWithOptionsException;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.optiondialog.exception.InputDoesNotMatchWithOptionsException;
 
 public abstract class AbstractOptionMessageMapper extends AbstractMessageMapper implements MessageMapper {
     public AbstractOptionMessageMapper(DialogCenter dialogCenter) {

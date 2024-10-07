@@ -1,22 +1,9 @@
 package backend.academy.dialogs.minmaxdialog.launcherminmaxdialog;
 
-import Hangman.dialogs.common.messagemapper.AbstractMinMaxMessageMapper;
-import Hangman.dialogs.dialogcenter.DialogCenter;
+import backend.academy.dialogs.common.messagemapper.AbstractMinMaxMessageMapper;
+import backend.academy.dialogs.dialogcenter.DialogCenter;
 
 public class LauncherMinMaxMessageMapper extends AbstractMinMaxMessageMapper {
-    private enum Key {
-        ALLOWED_ONLY_ONE_CHARACTER("allowed_only_one_character"),
-        ALLOWED_ONLY_DIGIT("allowed_only_digit"),
-        ALLOWED_ONLY_MENU_NUMBER("allowed_only_menu_number");
-
-        public final String section = "LauncherMinMaxMessageMapper";
-        public final String key;
-
-        Key(String key) {
-            this.key = key;
-        }
-    }
-
     public LauncherMinMaxMessageMapper(DialogCenter dialogCenter) {
         super(dialogCenter);
     }
@@ -34,5 +21,18 @@ public class LauncherMinMaxMessageMapper extends AbstractMinMaxMessageMapper {
     @Override
     protected String messageNumberOutOfRangeException() {
         return dialogCenter.get(Key.ALLOWED_ONLY_MENU_NUMBER.section, Key.ALLOWED_ONLY_MENU_NUMBER.key);
+    }
+
+    private enum Key {
+        ALLOWED_ONLY_ONE_CHARACTER("allowed_only_one_character"),
+        ALLOWED_ONLY_DIGIT("allowed_only_digit"),
+        ALLOWED_ONLY_MENU_NUMBER("allowed_only_menu_number");
+
+        public final String section = "LauncherMinMaxMessageMapper";
+        public final String key;
+
+        Key(String key) {
+            this.key = key;
+        }
     }
 }

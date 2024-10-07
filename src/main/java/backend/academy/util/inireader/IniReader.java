@@ -1,14 +1,16 @@
-package backend.academy.inireader;
+package backend.academy.util.inireader;
 
-import Hangman.util.inireader.exception.IniValueNotFoundException;
-import Hangman.util.inireader.exception.OpenIniFileException;
-import Hangman.util.inireader.exception.ReadIniFileException;
+import backend.academy.util.inireader.exception.IniValueNotFoundException;
+import backend.academy.util.inireader.exception.OpenIniFileException;
+import backend.academy.util.inireader.exception.ReadIniFileException;
+import org.apache.commons.configuration2.INIConfiguration;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import org.apache.commons.configuration2.INIConfiguration;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 public class IniReader {
     private final String fileName;

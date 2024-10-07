@@ -1,45 +1,17 @@
 package backend.academy.session;
 
-import Hangman.dialogs.common.dialog.Dialog;
-import Hangman.display.Display;
-import Hangman.exception.NoSuchLetterException;
-import Hangman.messagecenter.MessageCenter;
-import Hangman.picture.EasyHangmanPicture;
-import Hangman.picture.HangmanPicture;
+import backend.academy.dialogs.common.dialog.Dialog;
+import backend.academy.display.Display;
+import backend.academy.exception.NoSuchLetterException;
+import backend.academy.messagecenter.MessageCenter;
+import backend.academy.picture.EasyHangmanPicture;
+import backend.academy.picture.HangmanPicture;
+
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
 public class HangmanSession {
-    public enum Difficult {
-        EASY(8, new EasyHangmanPicture()), CLASSIC(6, new HangmanPicture());
-
-        public final int MAX_ATTEMPTS;
-        public final HangmanPicture hangmanPicture;
-
-        Difficult(int maxAttempts, HangmanPicture hangmanPicture) {
-            this.MAX_ATTEMPTS = maxAttempts;
-            this.hangmanPicture = hangmanPicture;
-        }
-    }
-
-    public enum Category {
-        NATURE("nature"),
-        COUNTRIES("countries"),
-        ANIMALS("animals"),
-        RANDOM("random");
-
-        private final String categoryValue;
-
-        Category(String categoryValue) {
-            this.categoryValue = categoryValue;
-        }
-
-        public String getCategoryName() {
-            return categoryValue;
-        }
-    }
-
     private final HiddenWord hiddenWord;
     private final Difficult difficult;
     private final Category category;
@@ -51,29 +23,6 @@ public class HangmanSession {
     private final Set<String> wrongLetters = new HashSet<>();
     private int leftAttempts;
     private boolean isSessionOn = true;
-
-    private enum Result {
-        WIN, LOSE
-    }
-
-    private enum Key {
-        START("start"),
-        ATTEMPTS_ARE_OVER("attempts_are_over"),
-        WIN("win"),
-        NO_SUCH_LETTER_TEMPLATE("no_such_letter_template"),
-        LETTER_ALREADY_ENTERED("letter_already_entered"),
-        ERRORS("errors"),
-        LEFT_ATTEMPTS("left_attempts"),
-        HIDDEN_WORD("hidden_word");
-
-        public final String section = "HangmanSession";
-        public final String key;
-
-        Key(String key) {
-            this.key = key;
-        }
-    }
-
     public HangmanSession(Difficult difficult, HiddenWord hiddenWord, Category category, Dialog dialog, Display infoDisplay, Display errorDisplay, MessageCenter messageCenter) {
         this.hiddenWord = hiddenWord;
         this.difficult = difficult;
@@ -86,7 +35,6 @@ public class HangmanSession {
         this.hangmanPicture = difficult.hangmanPicture;
         displayStartMessage();
     }
-
     public HangmanSession(Difficult difficult, HiddenWord hiddenWord, Dialog dialog, Display display, MessageCenter messageCenter, Category category) {
         this(difficult, hiddenWord, category, dialog, display, display, messageCenter);
     }
@@ -135,7 +83,7 @@ public class HangmanSession {
         if (e instanceof NoSuchLetterException noSuchLetterException) {
             String wrongLetter = noSuchLetterException.getWrongLetter();
             String noSuchLetterTemplate = messageCenter.get(Key.NO_SUCH_LETTER_TEMPLATE.section, Key.NO_SUCH_LETTER_TEMPLATE.key);
-            return noSuchLetterTemplate.formatted(wrongLetter);
+            return noSuchLetterTemplate.format(wrongLetter);
         }
         throw new IllegalArgumentException("Unable convert exception to text: " + e);
     }
@@ -219,5 +167,56 @@ public class HangmanSession {
 
     private boolean isWin(Result result) {
         return result == Result.WIN;
+    }
+
+    public enum Difficult {
+        EASY(8, new EasyHangmanPicture()), CLASSIC(6, new HangmanPicture());
+
+        public final int MAX_ATTEMPTS;
+        public final HangmanPicture hangmanPicture;
+
+        Difficult(int maxAttempts, HangmanPicture hangmanPicture) {
+            this.MAX_ATTEMPTS = maxAttempts;
+            this.hangmanPicture = hangmanPicture;
+        }
+    }
+
+    public enum Category {
+        NATURE("nature"),
+        COUNTRIES("countries"),
+        ANIMALS("animals"),
+        RANDOM("random");
+
+        private final String categoryName;
+
+        Category(String categoryName) {
+            this.categoryName = categoryName;
+        }
+
+        public String getCategoryName() {
+            return categoryName;
+        }
+    }
+
+    private enum Result {
+        WIN, LOSE
+    }
+
+    private enum Key {
+        START("start"),
+        ATTEMPTS_ARE_OVER("attempts_are_over"),
+        WIN("win"),
+        NO_SUCH_LETTER_TEMPLATE("no_such_letter_template"),
+        LETTER_ALREADY_ENTERED("letter_already_entered"),
+        ERRORS("errors"),
+        LEFT_ATTEMPTS("left_attempts"),
+        HIDDEN_WORD("hidden_word");
+
+        public final String section = "HangmanSession";
+        public final String key;
+
+        Key(String key) {
+            this.key = key;
+        }
     }
 }
