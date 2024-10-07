@@ -13,13 +13,10 @@ import backend.academy.launcher.HangmanGameLauncher;
 import backend.academy.messagecenter.FileMessageCenter;
 import backend.academy.messagecenter.MessageCenter;
 import backend.academy.messagecenter.exception.UnableGetMessageCenterException;
-
-
-import lombok.experimental.UtilityClass;
-
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.StringJoiner;
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Main {
@@ -30,22 +27,30 @@ public class Main {
         Display display = new InfoDisplay();
         Language language = inputLanguage(display::show);
 
-        Optional<FileMessageCenter> messageCenterOptional = getMessageCenter("lang/%s", "%s_messages.ini", language, display);
+        Optional<FileMessageCenter> messageCenterOptional =
+            getMessageCenter("lang/%s", "%s_messages.ini", language, display);
         if (messageCenterOptional.isEmpty()) {
             return;
         }
-        Optional<FileDialogCenter> dialogCenterOptional = getDialogCenter("lang/%s", "%s_dialogs.ini", language, display);
+        Optional<FileDialogCenter> dialogCenterOptional =
+            getDialogCenter("lang/%s", "%s_dialogs.ini", language, display);
         if (dialogCenterOptional.isEmpty()) {
             return;
         }
         DialogCenter dialogCenter = dialogCenterOptional.get();
         MessageCenter messageCenter = messageCenterOptional.get();
 
-        HangmanGameLauncher hangmanGameLauncher = new HangmanGameLauncher(display, language, messageCenter, dialogCenter);
+        HangmanGameLauncher hangmanGameLauncher =
+            new HangmanGameLauncher(display, language, messageCenter, dialogCenter);
         hangmanGameLauncher.start();
     }
 
-    private static Optional<FileMessageCenter> getMessageCenter(String directory, String filenameTemplate, Language language, Display display) {
+    private static Optional<FileMessageCenter> getMessageCenter(
+        String directory,
+        String filenameTemplate,
+        Language language,
+        Display display
+    ) {
         try {
             return Optional.of(new FileMessageCenter(directory, filenameTemplate, language));
         } catch (UnableGetMessageCenterException e) {
@@ -55,7 +60,12 @@ public class Main {
         }
     }
 
-    private static Optional<FileDialogCenter> getDialogCenter(String directory, String filenameTemplate, Language language, Display display) {
+    private static Optional<FileDialogCenter> getDialogCenter(
+        String directory,
+        String filenameTemplate,
+        Language language,
+        Display display
+    ) {
         try {
             return Optional.of(new FileDialogCenter(directory, filenameTemplate, language));
         } catch (UnableGetDialogCenterException e) {

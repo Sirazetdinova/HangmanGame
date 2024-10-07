@@ -12,7 +12,13 @@ public abstract class AbstractDialog implements Dialog {
     private final Validator<String> validator;
     private final MessageMapper messageMapper;
 
-    public AbstractDialog(Printer infoPrinter, Printer errorPrinter, String title, MessageMapper messageMapper, Validator<String> validator) {
+    public AbstractDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        String title,
+        MessageMapper messageMapper,
+        Validator<String> validator
+    ) {
         this.infoPrinter = infoPrinter;
         this.errorPrinter = errorPrinter;
         this.title = title;

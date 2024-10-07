@@ -9,7 +9,13 @@ import backend.academy.dialogs.letterdialog.en.EnLetterValidator;
 import backend.academy.dialogs.letterdialog.ru.RuLetterValidator;
 
 public class LetterDialog extends AbstractDialog {
-    public LetterDialog(Printer infoPrinter, Printer errorPrinter, DialogCenter dialogCenter, Language language, String title) {
+    public LetterDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        Language language,
+        String title
+    ) {
         super(infoPrinter, errorPrinter, title, new LetterMessageMapper(dialogCenter), createValidator(language));
     }
 

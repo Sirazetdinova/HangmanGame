@@ -29,7 +29,8 @@ public abstract class AbstractLetterValidator implements Validator<String> {
     }
 
     public boolean isLetterInLanguage(char letter) {
-        Predicate<UnicodeBlock> predicate = unicodeBlock -> isLetter(letter) && UnicodeBlock.of(letter).equals(unicodeBlock);
+        Predicate<UnicodeBlock> predicate =
+            unicodeBlock -> isLetter(letter) && UnicodeBlock.of(letter).equals(unicodeBlock);
         return unicodeBlocks.stream().anyMatch(predicate);
     }
 

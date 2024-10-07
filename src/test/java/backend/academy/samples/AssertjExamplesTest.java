@@ -1,5 +1,10 @@
 package backend.academy.samples;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.assertj.core.api.Condition;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -7,11 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.assertj.core.api.Condition;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 import static backend.academy.samples.AssertjExamplesTest.Race.DRAWF;
 import static backend.academy.samples.AssertjExamplesTest.Race.ELF;
 import static backend.academy.samples.AssertjExamplesTest.Race.HOBBIT;
@@ -24,7 +24,6 @@ import static org.assertj.core.api.Assertions.in;
 import static org.assertj.core.api.Assertions.not;
 import static org.assertj.core.api.Assertions.notIn;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
-import static org.assertj.core.api.InstanceOfAssertFactories.DURATION;
 
 /**
  * AssertJ is a Java library that provides a rich set of assertions
@@ -36,6 +35,20 @@ import static org.assertj.core.api.InstanceOfAssertFactories.DURATION;
  */
 @Log4j2
 public class AssertjExamplesTest {
+    @RequiredArgsConstructor
+    public enum Race {
+        HOBBIT("Hobbit"), MAN("Man"), MAIA("Maia"), DRAWF("Dwarf"), ELF("Elf"), ORC("Orc");
+        private final String name;
+
+        @Override
+        public String toString() {
+            return name;
+        }
+    }
+
+    public record TolkienCharacter(String name, int age, Race race) {
+    }
+
     @Nested
     class BasicAssertions {
         @Test
@@ -220,19 +233,5 @@ public class AssertjExamplesTest {
                 .hasMessageNotContaining("right")
                 .hasMessageNotContainingAny("right", "price");
         }
-    }
-
-    @RequiredArgsConstructor
-    public enum Race {
-        HOBBIT("Hobbit"), MAN("Man"), MAIA("Maia"), DRAWF("Dwarf"), ELF("Elf"), ORC("Orc");
-        private final String name;
-
-        @Override
-        public String toString() {
-            return name;
-        }
-    }
-
-    public record TolkienCharacter(String name, int age, Race race) {
     }
 }

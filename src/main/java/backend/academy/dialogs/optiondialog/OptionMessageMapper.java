@@ -10,7 +10,8 @@ public class OptionMessageMapper extends AbstractOptionMessageMapper {
 
     @Override
     protected String messageInputDoesNotMatchWithOptions() {
-        return dialogCenter.get(Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.section, Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.key);
+        return dialogCenter.get(Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.section,
+            Key.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.key);
     }
 
     private enum Key {

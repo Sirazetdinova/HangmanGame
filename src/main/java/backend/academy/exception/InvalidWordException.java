@@ -1,7 +1,8 @@
 package backend.academy.exception;
 
 public class InvalidWordException extends RuntimeException {
-    private static final String MESSAGE = "'%s' is not a word because it contains invalid characters or characters from a different language";
+    private static final String MESSAGE =
+        "'%s' is not a word because it contains invalid characters or characters from a different language";
 
     private final String invalidWord;
 

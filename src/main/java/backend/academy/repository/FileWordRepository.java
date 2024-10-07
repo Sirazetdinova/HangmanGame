@@ -16,9 +16,9 @@ public class FileWordRepository implements WordRepository {
     private final String filename;
     private List<String> words;
 
-
     public FileWordRepository(String directory, String filenameTemplate, Language language, Category category) {
-        this.filename = String.format("/%s/%s/%s.txt", directory, language.name().toLowerCase(), category.name().toLowerCase());
+        this.filename =
+            String.format("/%s/%s/%s.txt", directory, language.name().toLowerCase(), category.name().toLowerCase());
         this.wordRepositoryValidator = new WordRepositoryValidator(language);
     }
 
@@ -42,9 +42,9 @@ public class FileWordRepository implements WordRepository {
         InputStream wordsFileAsStream = getWordsFileAsStream();
         try (var reader = new BufferedReader(new InputStreamReader(wordsFileAsStream))) {
             words = reader.lines()
-                    .map(String::trim)
-                    .filter(s -> !s.isEmpty())
-                    .toList();
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
             wordRepositoryValidator.validate(words);
         } catch (IOException e) {
             throw new ReadWordsFileException(e);

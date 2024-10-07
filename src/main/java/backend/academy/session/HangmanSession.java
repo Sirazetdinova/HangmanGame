@@ -6,7 +6,6 @@ import backend.academy.exception.NoSuchLetterException;
 import backend.academy.messagecenter.MessageCenter;
 import backend.academy.picture.EasyHangmanPicture;
 import backend.academy.picture.HangmanPicture;
-
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -23,7 +22,16 @@ public class HangmanSession {
     private final Set<String> wrongLetters = new HashSet<>();
     private int leftAttempts;
     private boolean isSessionOn = true;
-    public HangmanSession(Difficult difficult, HiddenWord hiddenWord, Category category, Dialog dialog, Display infoDisplay, Display errorDisplay, MessageCenter messageCenter) {
+
+    public HangmanSession(
+        Difficult difficult,
+        HiddenWord hiddenWord,
+        Category category,
+        Dialog dialog,
+        Display infoDisplay,
+        Display errorDisplay,
+        MessageCenter messageCenter
+    ) {
         this.hiddenWord = hiddenWord;
         this.difficult = difficult;
         this.category = category;
@@ -35,7 +43,15 @@ public class HangmanSession {
         this.hangmanPicture = difficult.hangmanPicture;
         displayStartMessage();
     }
-    public HangmanSession(Difficult difficult, HiddenWord hiddenWord, Dialog dialog, Display display, MessageCenter messageCenter, Category category) {
+
+    public HangmanSession(
+        Difficult difficult,
+        HiddenWord hiddenWord,
+        Dialog dialog,
+        Display display,
+        MessageCenter messageCenter,
+        Category category
+    ) {
         this(difficult, hiddenWord, category, dialog, display, display, messageCenter);
     }
 
@@ -82,7 +98,8 @@ public class HangmanSession {
     private String convertExceptionToText(RuntimeException e) {
         if (e instanceof NoSuchLetterException noSuchLetterException) {
             String wrongLetter = noSuchLetterException.getWrongLetter();
-            String noSuchLetterTemplate = messageCenter.get(Key.NO_SUCH_LETTER_TEMPLATE.section, Key.NO_SUCH_LETTER_TEMPLATE.key);
+            String noSuchLetterTemplate =
+                messageCenter.get(Key.NO_SUCH_LETTER_TEMPLATE.section, Key.NO_SUCH_LETTER_TEMPLATE.key);
             return noSuchLetterTemplate.format(wrongLetter);
         }
         throw new IllegalArgumentException("Unable convert exception to text: " + e);

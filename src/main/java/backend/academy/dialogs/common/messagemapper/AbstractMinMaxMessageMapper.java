@@ -5,7 +5,6 @@ import backend.academy.dialogs.dialogcenter.DialogCenter;
 import backend.academy.dialogs.minmaxdialog.exception.NotDigitException;
 import backend.academy.dialogs.minmaxdialog.exception.NumberOutOfRangeException;
 
-
 public abstract class AbstractMinMaxMessageMapper extends AbstractMessageMapper implements MessageMapper {
     public AbstractMinMaxMessageMapper(DialogCenter dialogCenter) {
         super(dialogCenter);

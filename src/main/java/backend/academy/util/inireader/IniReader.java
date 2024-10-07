@@ -6,7 +6,6 @@ import backend.academy.util.inireader.exception.ReadIniFileException;
 import org.apache.commons.configuration2.INIConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

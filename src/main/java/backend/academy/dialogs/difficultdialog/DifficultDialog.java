@@ -5,7 +5,13 @@ import backend.academy.dialogs.dialogcenter.DialogCenter;
 import backend.academy.dialogs.optiondialog.OptionDialog;
 
 public class DifficultDialog extends OptionDialog {
-    public DifficultDialog(Printer infoPrinter, Printer errorPrinter, DialogCenter dialogCenter, String title, String... options) {
+    public DifficultDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        String title,
+        String... options
+    ) {
         super(infoPrinter, errorPrinter, new DifficultMessageMapper(dialogCenter), title, options);
     }
 

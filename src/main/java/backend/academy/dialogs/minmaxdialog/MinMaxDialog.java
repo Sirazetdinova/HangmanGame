@@ -6,7 +6,14 @@ import backend.academy.dialogs.common.messagemapper.MessageMapper;
 import backend.academy.dialogs.dialogcenter.DialogCenter;
 
 public class MinMaxDialog extends AbstractDialog {
-    public MinMaxDialog(Printer infoPrinter, Printer errorPrinter, DialogCenter dialogCenter, String title, int min, int max) {
+    public MinMaxDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        String title,
+        int min,
+        int max
+    ) {
         super(infoPrinter, errorPrinter, title, new MinMaxMessageMapper(dialogCenter), new MinMaxValidator(min, max));
     }
 
@@ -14,7 +21,14 @@ public class MinMaxDialog extends AbstractDialog {
         super(printer, title, new MinMaxMessageMapper(dialogCenter), new MinMaxValidator(min, max));
     }
 
-    protected MinMaxDialog(Printer infoPrinter, Printer errorPrinter, String title, MessageMapper messageMapper, int min, int max) {
+    protected MinMaxDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        String title,
+        MessageMapper messageMapper,
+        int min,
+        int max
+    ) {
         super(infoPrinter, errorPrinter, title, messageMapper, new MinMaxValidator(min, max));
     }
 
