@@ -10,11 +10,13 @@ public abstract class AbstractOptionMessageMapper extends AbstractMessageMapper 
 
     @Override
     public String apply(RuntimeException e) {
-        if (e instanceof InputDoesNotMatchWithOptionsException) {
+        try {
+            throw e;
+        } catch (InputDoesNotMatchWithOptionsException exc) {
             return messageInputDoesNotMatchWithOptions();
+        } catch (RuntimeException exc) {
+            throw new IllegalArgumentException("Illegal exception: " + exc);
         }
-
-        throw new IllegalArgumentException("Illegal exception: " + e);
     }
 
     protected abstract String messageInputDoesNotMatchWithOptions();

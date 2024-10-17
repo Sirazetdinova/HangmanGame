@@ -1,17 +1,15 @@
-package backend.academy.dialogs.common;
+package backend.academy.dialogs.common.validator;
 
+import backend.academy.dialogs.common.exception.MoreCharactersInputException;
 import backend.academy.dialogs.letterdialog.exception.NotLetterException;
 import backend.academy.dialogs.letterdialog.exception.NotLetterInLanguageException;
 import java.lang.Character.UnicodeBlock;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
 
 public abstract class AbstractLetterValidator implements Validator<String> {
-    private final List<UnicodeBlock> unicodeBlocks = new ArrayList<>();
+    private final UnicodeBlock unicodeBlock;
 
-    public AbstractLetterValidator(UnicodeBlock unicodeBlock) {
-        unicodeBlocks.add(unicodeBlock);
+    protected AbstractLetterValidator(UnicodeBlock unicodeBlock) {
+        this.unicodeBlock = unicodeBlock;
     }
 
     @Override
@@ -29,9 +27,7 @@ public abstract class AbstractLetterValidator implements Validator<String> {
     }
 
     public boolean isLetterInLanguage(char letter) {
-        Predicate<UnicodeBlock> predicate =
-            unicodeBlock -> isLetter(letter) && UnicodeBlock.of(letter).equals(unicodeBlock);
-        return unicodeBlocks.stream().anyMatch(predicate);
+        return isLetter(letter) && UnicodeBlock.of(letter).equals(unicodeBlock);
     }
 
     public boolean isLetter(char letter) {

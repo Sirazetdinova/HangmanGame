@@ -10,20 +10,20 @@ public class LauncherMinMaxMessageMapper extends AbstractMinMaxMessageMapper {
 
     @Override
     protected String messageMoreCharactersInputException() {
-        return dialogCenter.get(Key.ALLOWED_ONLY_ONE_CHARACTER.section, Key.ALLOWED_ONLY_ONE_CHARACTER.key);
+        return dialogCenter.get(MessageKey.ALLOWED_ONLY_ONE_CHARACTER.section, MessageKey.ALLOWED_ONLY_ONE_CHARACTER.key);
     }
 
     @Override
     protected String messageNotDigitException() {
-        return dialogCenter.get(Key.ALLOWED_ONLY_DIGIT.section, Key.ALLOWED_ONLY_DIGIT.key);
+        return dialogCenter.get(MessageKey.ALLOWED_ONLY_DIGIT.section, MessageKey.ALLOWED_ONLY_DIGIT.key);
     }
 
     @Override
     protected String messageNumberOutOfRangeException() {
-        return dialogCenter.get(Key.ALLOWED_ONLY_MENU_NUMBER.section, Key.ALLOWED_ONLY_MENU_NUMBER.key);
+        return dialogCenter.get(MessageKey.ALLOWED_ONLY_MENU_NUMBER.section, MessageKey.ALLOWED_ONLY_MENU_NUMBER.key);
     }
 
-    private enum Key {
+    private enum MessageKey {
         ALLOWED_ONLY_ONE_CHARACTER("allowed_only_one_character"),
         ALLOWED_ONLY_DIGIT("allowed_only_digit"),
         ALLOWED_ONLY_MENU_NUMBER("allowed_only_menu_number");
@@ -31,7 +31,7 @@ public class LauncherMinMaxMessageMapper extends AbstractMinMaxMessageMapper {
         public final String section = "LauncherMinMaxMessageMapper";
         public final String key;
 
-        Key(String key) {
+        MessageKey(String key) {
             this.key = key;
         }
     }

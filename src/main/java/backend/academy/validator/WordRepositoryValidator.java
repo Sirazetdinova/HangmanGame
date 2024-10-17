@@ -1,8 +1,8 @@
 package backend.academy.validator;
 
 import backend.academy.constant.Language;
-import backend.academy.dialogs.common.AbstractLetterValidator;
-import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.common.validator.AbstractLetterValidator;
+import backend.academy.dialogs.common.validator.Validator;
 import backend.academy.dialogs.letterdialog.en.EnLetterValidator;
 import backend.academy.dialogs.letterdialog.ru.RuLetterValidator;
 import backend.academy.exception.EmptyWordListException;

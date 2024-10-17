@@ -1,6 +1,6 @@
 package backend.academy.dialogs.common.messagemapper;
 
-import backend.academy.dialogs.common.MoreCharactersInputException;
+import backend.academy.dialogs.common.exception.MoreCharactersInputException;
 import backend.academy.dialogs.dialogcenter.DialogCenter;
 import backend.academy.dialogs.minmaxdialog.exception.NotDigitException;
 import backend.academy.dialogs.minmaxdialog.exception.NumberOutOfRangeException;
@@ -12,14 +12,17 @@ public abstract class AbstractMinMaxMessageMapper extends AbstractMessageMapper 
 
     @Override
     public String apply(RuntimeException e) {
-        if (e instanceof MoreCharactersInputException) {
+        try {
+            throw e;
+        } catch (MoreCharactersInputException exc) {
             return messageMoreCharactersInputException();
-        } else if (e instanceof NotDigitException) {
+        } catch (NotDigitException exc) {
             return messageNotDigitException();
-        } else if (e instanceof NumberOutOfRangeException) {
+        } catch (NumberOutOfRangeException exc) {
             return messageNumberOutOfRangeException();
+        } catch (RuntimeException exc) {
+            throw new IllegalArgumentException("Illegal exception: " + exc);
         }
-        throw new IllegalArgumentException("Illegal exception: " + e);
     }
 
     protected abstract String messageMoreCharactersInputException();

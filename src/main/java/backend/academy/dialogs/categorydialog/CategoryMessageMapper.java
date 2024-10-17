@@ -10,16 +10,16 @@ public class CategoryMessageMapper extends AbstractOptionMessageMapper {
 
     @Override
     protected String messageInputDoesNotMatchWithOptions() {
-        return dialogCenter.get(Key.INVALID_CATEGORY.section, Key.INVALID_CATEGORY.key);
+        return dialogCenter.get(MessageKey.INVALID_CATEGORY.section, MessageKey.INVALID_CATEGORY.key);
     }
 
-    private enum Key {
+    private enum MessageKey {
         INVALID_CATEGORY("invalid_category");
 
         public final String section = "CategoryMessageMapper";
         public final String key;
 
-        Key(String key) {
+        MessageKey(String key) {
             this.key = key;
         }
     }

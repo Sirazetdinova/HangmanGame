@@ -1,6 +1,6 @@
 package backend.academy.dialogs.optiondialog;
 
-import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.common.validator.Validator;
 import backend.academy.dialogs.optiondialog.exception.InputDoesNotMatchWithOptionsException;
 import java.util.List;
 

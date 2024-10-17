@@ -66,7 +66,7 @@ public class HangmanGameLauncher {
 
     public void start() {
         running = true;
-        infoDisplay.show(messageCenter.get(Key.WELCOME.section, Key.WELCOME.key));
+        infoDisplay.show(messageCenter.get(MessageKey.WELCOME.section, MessageKey.WELCOME.key));
 
         while (running) {
             displayStartMessage();
@@ -76,21 +76,15 @@ public class HangmanGameLauncher {
     }
 
     private void displayStartMessage() {
-        String startTemplate = messageCenter.get(Key.START_TEMPLATE.section, Key.START_TEMPLATE.key);
-        infoDisplay.show(startTemplate.format(START_NEW_GAME_COMMAND, EXIT_COMMAND));
+        String startTemplate = messageCenter.get(MessageKey.START_TEMPLATE.section, MessageKey.START_TEMPLATE.key);
+        infoDisplay.show(startTemplate.formatted(START_NEW_GAME_COMMAND, EXIT_COMMAND));
     }
 
     private void chooseAction(String playerInput) {
         switch (playerInput) {
-            case START_NEW_GAME_COMMAND:
-                startNewGame();
-                break;
-            case EXIT_COMMAND:
-                exit();
-                break;
-            default:
-                errorDisplay.show(messageCenter.get(Key.INVALID_COMMAND.section, Key.INVALID_COMMAND.key));
-                break;
+            case START_NEW_GAME_COMMAND -> startNewGame();
+            case EXIT_COMMAND -> exit();
+            default -> errorDisplay.show(messageCenter.get(MessageKey.INVALID_COMMAND.section, MessageKey.INVALID_COMMAND.key));
         }
     }
 
@@ -125,36 +119,31 @@ public class HangmanGameLauncher {
             String text = wordRepository.get();
             HiddenWord hiddenWord = new HiddenWord(text);
             return Optional.of(hiddenWord);
-        } catch (RuntimeException e) {
-            String exceptionMessage =
-                getExceptionMessage(e).orElseThrow(() -> new IllegalArgumentException("Illegal exception: " + e));
-            handleWordRepositoryException(exceptionMessage);
-        }
-        return Optional.empty();
-    }
-
-    private Optional<String> getExceptionMessage(RuntimeException e) {
-        if (e instanceof OpenWordsFileException) {
-            String message = messageCenter.get(Key.OPEN_FILE_ERROR.section, Key.OPEN_FILE_ERROR.key);
-            return Optional.of(message);
-        } else if (e instanceof ReadWordsFileException) {
-            String message = messageCenter.get(Key.READ_FILE_ERROR.section, Key.READ_FILE_ERROR.key);
-            return Optional.of(message);
-        } else if (e instanceof EmptyWordListException) {
-            String message = messageCenter.get(Key.EMPTY_WORD_LIST.section, Key.EMPTY_WORD_LIST.key);
-            return Optional.of(message);
-        } else if (e instanceof InvalidWordException invalidWordException) {
-            String invalidWordTemplate =
-                messageCenter.get(Key.INVALID_WORD_TEMPLATE.section, Key.INVALID_WORD_TEMPLATE.key);
-            String message = invalidWordTemplate.format(invalidWordException.getInvalidWord());
-            return Optional.of(message);
+        } catch (OpenWordsFileException e) {
+            handleWordRepositoryException(
+                messageCenter.get(MessageKey.OPEN_FILE_ERROR.section, MessageKey.OPEN_FILE_ERROR.key)
+            );
+        } catch (ReadWordsFileException e) {
+            handleWordRepositoryException(
+                messageCenter.get(MessageKey.READ_FILE_ERROR.section, MessageKey.READ_FILE_ERROR.key)
+            );
+        } catch (EmptyWordListException e) {
+            handleWordRepositoryException(
+                messageCenter.get(MessageKey.EMPTY_WORD_LIST.section, MessageKey.EMPTY_WORD_LIST.key)
+            );
+        } catch (InvalidWordException e) {
+            String invalidWordMessage = messageCenter.get(
+                MessageKey.INVALID_WORD_TEMPLATE.section,
+                MessageKey.INVALID_WORD_TEMPLATE.key
+            ).formatted(e.getInvalidWord());
+            handleWordRepositoryException(invalidWordMessage);
         }
         return Optional.empty();
     }
 
     private void handleWordRepositoryException(String exceptionMessage) {
         errorDisplay.show(exceptionMessage);
-        errorDisplay.show(messageCenter.get(Key.UNABLE_CONTINUE.section, Key.UNABLE_CONTINUE.key));
+        errorDisplay.show(messageCenter.get(MessageKey.UNABLE_CONTINUE.section, MessageKey.UNABLE_CONTINUE.key));
         exit();
     }
 
@@ -177,10 +166,10 @@ public class HangmanGameLauncher {
     }
 
     private String getDifficultMessage() {
-        String difficult_template = messageCenter.get(Key.DIFFICULT_TEMPLATE.section, Key.DIFFICULT_TEMPLATE.key);
+        String difficultTemplate = messageCenter.get(MessageKey.DIFFICULT_TEMPLATE.section, MessageKey.DIFFICULT_TEMPLATE.key);
         return String.format("""
             %s
-            >>>""", difficult_template.format(
+            >>>""", difficultTemplate.formatted(
             EASY_DIFFICULT_COMMAND, Difficult.EASY.MAX_ATTEMPTS,
             CLASSIC_DIFFICULT_COMMAND, Difficult.CLASSIC.MAX_ATTEMPTS));
     }
@@ -209,10 +198,10 @@ public class HangmanGameLauncher {
     }
 
     private String getCategoryMessage() {
-        String category_template = messageCenter.get(Key.CATEGORY_TEMPLATE.section, Key.CATEGORY_TEMPLATE.key);
+        String categoryTemplate = messageCenter.get(MessageKey.CATEGORY_TEMPLATE.section, MessageKey.CATEGORY_TEMPLATE.key);
         return String.format("""
             %s
-            >>>""", category_template.format(
+            >>>""", categoryTemplate.formatted(
             NATURE_CATEGORY_COMMAND,
             COUNTRIES_CATEGORY_COMMAND,
             ANIMALS_CATEGORY_COMMAND,
@@ -225,11 +214,11 @@ public class HangmanGameLauncher {
     }
 
     private void exit() {
-        infoDisplay.show(messageCenter.get(Key.EXIT.section, Key.EXIT.key));
+        infoDisplay.show(messageCenter.get(MessageKey.EXIT.section, MessageKey.EXIT.key));
         running = false;
     }
 
-    private enum Key {
+    private enum MessageKey {
         START_TEMPLATE("start_template"),
         DIFFICULT_TEMPLATE("difficult_template"),
         CATEGORY_TEMPLATE("category_template"),
@@ -245,7 +234,7 @@ public class HangmanGameLauncher {
         public final String section = "Launcher";
         public final String key;
 
-        Key(String key) {
+        MessageKey(String key) {
             this.key = key;
         }
     }

@@ -7,7 +7,7 @@ public class IniValueNotFoundException extends RuntimeException {
     private final String key;
 
     public IniValueNotFoundException(String section, String key) {
-        super(MESSAGE.format(key, section));
+        super(MESSAGE.formatted(key, section));
         this.section = section;
         this.key = key;
     }

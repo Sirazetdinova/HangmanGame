@@ -13,8 +13,8 @@ public class FileMessageCenter implements MessageCenter {
 
     public FileMessageCenter(String directory, String filenameTemplate, Language language) {
         String languageName = language.name().toLowerCase();
-        String filename = filenameTemplate.format(languageName);
-        String iniFilename = String.format("%s/%s", directory.format(languageName), filename);
+        String filename = filenameTemplate.formatted(languageName);
+        String iniFilename = String.format("%s/%s", directory.formatted(languageName), filename);
         this.iniReader = getIniReader(iniFilename);
     }
 

@@ -1,7 +1,7 @@
 package backend.academy.dialogs.minmaxdialog;
 
-import backend.academy.dialogs.common.MoreCharactersInputException;
-import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.common.exception.MoreCharactersInputException;
+import backend.academy.dialogs.common.validator.Validator;
 import backend.academy.dialogs.minmaxdialog.exception.NotDigitException;
 import backend.academy.dialogs.minmaxdialog.exception.NumberOutOfRangeException;
 
@@ -25,13 +25,13 @@ public class MinMaxValidator implements Validator<String> {
             throw new NotDigitException();
         }
 
-        int typedNumber = parseInt(playerInput);
-        if (typedNumber < min | typedNumber > max) {
+        int typedNumber = tryParseInt(playerInput);
+        if (typedNumber < min || typedNumber > max) {
             throw new NumberOutOfRangeException(typedNumber);
         }
     }
 
-    private int parseInt(String playerInput) {
+    private int tryParseInt(String playerInput) {
         try {
             return Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {

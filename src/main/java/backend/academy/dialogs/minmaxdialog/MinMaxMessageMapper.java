@@ -10,20 +10,20 @@ public class MinMaxMessageMapper extends AbstractMinMaxMessageMapper {
 
     @Override
     protected String messageMoreCharactersInputException() {
-        return dialogCenter.get(Key.MORE_CHARACTERS.section, Key.MORE_CHARACTERS.key);
+        return dialogCenter.get(MessageKey.MORE_CHARACTERS.section, MessageKey.MORE_CHARACTERS.key);
     }
 
     @Override
     protected String messageNotDigitException() {
-        return dialogCenter.get(Key.NOT_DIGIT.section, Key.NOT_DIGIT.key);
+        return dialogCenter.get(MessageKey.NOT_DIGIT.section, MessageKey.NOT_DIGIT.key);
     }
 
     @Override
     protected String messageNumberOutOfRangeException() {
-        return dialogCenter.get(Key.NUMBER_OUT_OF_RANGE.section, Key.NUMBER_OUT_OF_RANGE.key);
+        return dialogCenter.get(MessageKey.NUMBER_OUT_OF_RANGE.section, MessageKey.NUMBER_OUT_OF_RANGE.key);
     }
 
-    private enum Key {
+    private enum MessageKey {
         MORE_CHARACTERS("more_characters"),
         NOT_DIGIT("not_digit"),
         NUMBER_OUT_OF_RANGE("number_out_of_range");
@@ -31,7 +31,7 @@ public class MinMaxMessageMapper extends AbstractMinMaxMessageMapper {
         public final String section = "MinMaxMessageMapper";
         public final String key;
 
-        Key(String key) {
+        MessageKey(String key) {
             this.key = key;
         }
     }

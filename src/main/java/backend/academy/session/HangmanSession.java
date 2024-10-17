@@ -6,6 +6,7 @@ import backend.academy.exception.NoSuchLetterException;
 import backend.academy.messagecenter.MessageCenter;
 import backend.academy.picture.EasyHangmanPicture;
 import backend.academy.picture.HangmanPicture;
+import backend.academy.picture.PictureProvider;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -18,7 +19,7 @@ public class HangmanSession {
     private final Display infoDisplay;
     private final Display errorDisplay;
     private final MessageCenter messageCenter;
-    private final HangmanPicture hangmanPicture;
+    private final PictureProvider pictureProvider;
     private final Set<String> wrongLetters = new HashSet<>();
     private int leftAttempts;
     private boolean isSessionOn = true;
@@ -40,7 +41,7 @@ public class HangmanSession {
         this.errorDisplay = errorDisplay;
         this.messageCenter = messageCenter;
         this.leftAttempts = difficult.MAX_ATTEMPTS;
-        this.hangmanPicture = difficult.hangmanPicture;
+        this.pictureProvider = difficult.pictureProvider;
         displayStartMessage();
     }
 
@@ -56,7 +57,7 @@ public class HangmanSession {
     }
 
     private void displayStartMessage() {
-        infoDisplay.show(messageCenter.get(Key.START.section, Key.START.key));
+        infoDisplay.show(messageCenter.get(MessageKey.START.section, MessageKey.START.key));
         infoDisplay.show(hiddenWord.getMask());
         displayHangmanPicture();
     }
@@ -96,13 +97,16 @@ public class HangmanSession {
     }
 
     private String convertExceptionToText(RuntimeException e) {
-        if (e instanceof NoSuchLetterException noSuchLetterException) {
-            String wrongLetter = noSuchLetterException.getWrongLetter();
+        try {
+            throw e;
+        } catch (NoSuchLetterException exc) {
+            String wrongLetter = exc.getWrongLetter();
             String noSuchLetterTemplate =
-                messageCenter.get(Key.NO_SUCH_LETTER_TEMPLATE.section, Key.NO_SUCH_LETTER_TEMPLATE.key);
-            return noSuchLetterTemplate.format(wrongLetter);
+                messageCenter.get(MessageKey.NO_SUCH_LETTER_TEMPLATE.section, MessageKey.NO_SUCH_LETTER_TEMPLATE.key);
+            return noSuchLetterTemplate.formatted(wrongLetter);
+        } catch (RuntimeException exc) {
+            throw new IllegalArgumentException("Unable convert exception to text: " + exc);
         }
-        throw new IllegalArgumentException("Unable convert exception to text: " + e);
     }
 
     private void handleWrongLetter(String letter) {
@@ -110,7 +114,7 @@ public class HangmanSession {
         if (!wrongLetters.contains(letter)) {
             wrongLetters.add(letter);
         } else {
-            errorDisplay.show(messageCenter.get(Key.LETTER_ALREADY_ENTERED.section, Key.LETTER_ALREADY_ENTERED.key));
+            errorDisplay.show(messageCenter.get(MessageKey.LETTER_ALREADY_ENTERED.section, MessageKey.LETTER_ALREADY_ENTERED.key));
             displayErrorMessage();
             return;
         }
@@ -135,12 +139,12 @@ public class HangmanSession {
     }
 
     private void displayHangmanPicture() {
-        String picture = hangmanPicture.get(difficult.MAX_ATTEMPTS - leftAttempts);
+        String picture = pictureProvider.get(difficult.MAX_ATTEMPTS - leftAttempts);
         infoDisplay.show(picture);
     }
 
     private void displayWrongLetters() {
-        String errorsMessage = messageCenter.get(Key.ERRORS.section, Key.ERRORS.key);
+        String errorsMessage = messageCenter.get(MessageKey.ERRORS.section, MessageKey.ERRORS.key);
         infoDisplay.show(errorsMessage + getStringOfWrongLetters());
     }
 
@@ -153,7 +157,7 @@ public class HangmanSession {
     }
 
     private void displayLeftAttempts() {
-        String leftAttemptsMessage = messageCenter.get(Key.LEFT_ATTEMPTS.section, Key.LEFT_ATTEMPTS.key);
+        String leftAttemptsMessage = messageCenter.get(MessageKey.LEFT_ATTEMPTS.section, MessageKey.LEFT_ATTEMPTS.key);
         infoDisplay.show(leftAttemptsMessage + leftAttempts);
     }
 
@@ -167,14 +171,14 @@ public class HangmanSession {
     }
 
     private void displayWinMessage() {
-        infoDisplay.show(messageCenter.get(Key.WIN.section, Key.WIN.key));
+        infoDisplay.show(messageCenter.get(MessageKey.WIN.section, MessageKey.WIN.key));
     }
 
     private void displayLoseMessage() {
-        errorDisplay.show(messageCenter.get(Key.ATTEMPTS_ARE_OVER.section, Key.ATTEMPTS_ARE_OVER.key));
+        errorDisplay.show(messageCenter.get(MessageKey.ATTEMPTS_ARE_OVER.section, MessageKey.ATTEMPTS_ARE_OVER.key));
         displayWrongLetters();
         String revealedWord = hiddenWord.reveal();
-        String hiddenWordMessage = messageCenter.get(Key.HIDDEN_WORD.section, Key.HIDDEN_WORD.key);
+        String hiddenWordMessage = messageCenter.get(MessageKey.HIDDEN_WORD.section, MessageKey.HIDDEN_WORD.key);
         infoDisplay.show(hiddenWordMessage + revealedWord);
     }
 
@@ -190,11 +194,11 @@ public class HangmanSession {
         EASY(8, new EasyHangmanPicture()), CLASSIC(6, new HangmanPicture());
 
         public final int MAX_ATTEMPTS;
-        public final HangmanPicture hangmanPicture;
+        public final PictureProvider pictureProvider;
 
-        Difficult(int maxAttempts, HangmanPicture hangmanPicture) {
+        Difficult(int maxAttempts, PictureProvider pictureProvider) {
             this.MAX_ATTEMPTS = maxAttempts;
-            this.hangmanPicture = hangmanPicture;
+            this.pictureProvider = pictureProvider;
         }
     }
 
@@ -219,7 +223,7 @@ public class HangmanSession {
         WIN, LOSE
     }
 
-    private enum Key {
+    private enum MessageKey {
         START("start"),
         ATTEMPTS_ARE_OVER("attempts_are_over"),
         WIN("win"),
@@ -232,7 +236,7 @@ public class HangmanSession {
         public final String section = "HangmanSession";
         public final String key;
 
-        Key(String key) {
+        MessageKey(String key) {
             this.key = key;
         }
     }

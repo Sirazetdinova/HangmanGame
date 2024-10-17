@@ -15,8 +15,4 @@ public class LauncherMinMaxDialog extends MinMaxDialog {
     ) {
         super(infoPrinter, errorPrinter, title, new LauncherMinMaxMessageMapper(dialogCenter), min, max);
     }
-
-    public LauncherMinMaxDialog(Printer printer, DialogCenter dialogCenter, String title, int max, int min) {
-        super(printer, title, new LauncherMinMaxMessageMapper(dialogCenter), min, max);
-    }
 }

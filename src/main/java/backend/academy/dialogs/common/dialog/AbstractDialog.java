@@ -1,7 +1,7 @@
 package backend.academy.dialogs.common.dialog;
 
 import backend.academy.dialogs.common.Printer;
-import backend.academy.dialogs.common.Validator;
+import backend.academy.dialogs.common.validator.Validator;
 import backend.academy.dialogs.common.messagemapper.MessageMapper;
 import java.util.Scanner;
 

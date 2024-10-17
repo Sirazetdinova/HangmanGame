@@ -15,7 +15,7 @@ import backend.academy.messagecenter.MessageCenter;
 import backend.academy.messagecenter.exception.UnableGetMessageCenterException;
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.StringJoiner;
+import java.util.stream.Collectors;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
@@ -55,7 +55,6 @@ public class Main {
             return Optional.of(new FileMessageCenter(directory, filenameTemplate, language));
         } catch (UnableGetMessageCenterException e) {
             showErrorMessage(display);
-            System.exit(0);
             return Optional.empty();
         }
     }
@@ -70,7 +69,6 @@ public class Main {
             return Optional.of(new FileDialogCenter(directory, filenameTemplate, language));
         } catch (UnableGetDialogCenterException e) {
             showErrorMessage(display);
-            System.exit(0);
             return Optional.empty();
         }
     }
@@ -88,8 +86,9 @@ public class Main {
     }
 
     private static String getLanguageMessage() {
-        StringJoiner stringJoiner = new StringJoiner(", ");
-        Arrays.stream(Language.values()).map(Enum::name).forEach(stringJoiner::add);
-        return "Choose language: %s".format(stringJoiner.toString());
+        String message = Arrays.stream(Language.values())
+            .map(Enum::name)
+            .collect(Collectors.joining(", "));
+        return "Choose language: %s".formatted(message);
     }
 }

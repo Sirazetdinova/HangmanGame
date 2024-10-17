@@ -10,16 +10,16 @@ public class DifficultMessageMapper extends AbstractOptionMessageMapper {
 
     @Override
     protected String messageInputDoesNotMatchWithOptions() {
-        return dialogCenter.get(Key.INVALID_DIFFICULT.section, Key.INVALID_DIFFICULT.key);
+        return dialogCenter.get(MessageKey.INVALID_DIFFICULT.section, MessageKey.INVALID_DIFFICULT.key);
     }
 
-    private enum Key {
+    private enum MessageKey {
         INVALID_DIFFICULT("invalid_difficult");
 
         public final String section = "DifficultMessageMapper";
         public final String key;
 
-        Key(String key) {
+        MessageKey(String key) {
             this.key = key;
         }
     }
