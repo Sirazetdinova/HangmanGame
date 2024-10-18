@@ -1,8 +1,8 @@
 package backend.academy.dialogs.common.dialog;
 
 import backend.academy.dialogs.common.Printer;
-import backend.academy.dialogs.common.validator.Validator;
 import backend.academy.dialogs.common.messagemapper.MessageMapper;
+import backend.academy.dialogs.common.validator.Validator;
 import java.util.Scanner;
 
 public abstract class AbstractDialog implements Dialog {

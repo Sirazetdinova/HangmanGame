@@ -14,22 +14,22 @@ public class HiddenWord {
     }
 
     private StringBuilder createWordMask() {
-        String mask = PLACEHOLDER.repeat(text.length());
-        return new StringBuilder(mask);
+        String maskedWord = PLACEHOLDER.repeat(text.length());
+        return new StringBuilder(maskedWord);
     }
 
     public String revealLetter(String letter) {
-        letter = letter.toUpperCase();
-        if (!text.contains(letter)) {
-            throw new NoSuchLetterException(letter);
+        String upperCaseLetter = letter.toUpperCase();
+        if (!text.contains(upperCaseLetter)) {
+            throw new NoSuchLetterException(upperCaseLetter);
         }
 
-        if (isGuessed() || isLetterAlreadyRevealed(letter)) {
+        if (isGuessed() || isLetterAlreadyRevealed(upperCaseLetter)) {
             return mask.toString();
         }
 
         for (int i = 0; i < text.length(); i++) {
-            char ch = letter.charAt(0);
+            char ch = upperCaseLetter.charAt(0);
             if (text.charAt(i) == ch) {
                 mask.setCharAt(i, ch);
             }

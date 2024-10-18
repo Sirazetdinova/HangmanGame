@@ -1,10 +1,5 @@
 package backend.academy.samples;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.assertj.core.api.Condition;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -12,6 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.assertj.core.api.Condition;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import static backend.academy.samples.AssertjExamplesTest.Race.DRAWF;
 import static backend.academy.samples.AssertjExamplesTest.Race.ELF;
 import static backend.academy.samples.AssertjExamplesTest.Race.HOBBIT;

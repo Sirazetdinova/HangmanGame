@@ -40,7 +40,7 @@ public class HangmanSession {
         this.infoDisplay = infoDisplay;
         this.errorDisplay = errorDisplay;
         this.messageCenter = messageCenter;
-        this.leftAttempts = difficult.MAX_ATTEMPTS;
+        this.leftAttempts = difficult.maxAttempts;
         this.pictureProvider = difficult.pictureProvider;
         displayStartMessage();
     }
@@ -110,11 +110,12 @@ public class HangmanSession {
     }
 
     private void handleWrongLetter(String letter) {
-        letter = letter.toUpperCase();
-        if (!wrongLetters.contains(letter)) {
-            wrongLetters.add(letter);
+        String upperCaseLetter = letter.toUpperCase();
+        if (!wrongLetters.contains(upperCaseLetter)) {
+            wrongLetters.add(upperCaseLetter);
         } else {
-            errorDisplay.show(messageCenter.get(MessageKey.LETTER_ALREADY_ENTERED.section, MessageKey.LETTER_ALREADY_ENTERED.key));
+            errorDisplay.show(
+                messageCenter.get(MessageKey.LETTER_ALREADY_ENTERED.section, MessageKey.LETTER_ALREADY_ENTERED.key));
             displayErrorMessage();
             return;
         }
@@ -139,7 +140,7 @@ public class HangmanSession {
     }
 
     private void displayHangmanPicture() {
-        String picture = pictureProvider.get(difficult.MAX_ATTEMPTS - leftAttempts);
+        String picture = pictureProvider.get(difficult.maxAttempts - leftAttempts);
         infoDisplay.show(picture);
     }
 
@@ -193,11 +194,11 @@ public class HangmanSession {
     public enum Difficult {
         EASY(8, new EasyHangmanPicture()), CLASSIC(6, new HangmanPicture());
 
-        public final int MAX_ATTEMPTS;
+        public final int maxAttempts;
         public final PictureProvider pictureProvider;
 
         Difficult(int maxAttempts, PictureProvider pictureProvider) {
-            this.MAX_ATTEMPTS = maxAttempts;
+            this.maxAttempts = maxAttempts;
             this.pictureProvider = pictureProvider;
         }
     }

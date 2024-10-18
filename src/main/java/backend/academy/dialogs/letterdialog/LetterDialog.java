@@ -2,8 +2,8 @@ package backend.academy.dialogs.letterdialog;
 
 import backend.academy.constant.Language;
 import backend.academy.dialogs.common.Printer;
-import backend.academy.dialogs.common.validator.Validator;
 import backend.academy.dialogs.common.dialog.AbstractDialog;
+import backend.academy.dialogs.common.validator.Validator;
 import backend.academy.dialogs.dialogcenter.DialogCenter;
 import backend.academy.dialogs.letterdialog.en.EnLetterValidator;
 import backend.academy.dialogs.letterdialog.ru.RuLetterValidator;

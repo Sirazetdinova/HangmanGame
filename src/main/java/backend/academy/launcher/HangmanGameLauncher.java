@@ -31,6 +31,8 @@ public class HangmanGameLauncher {
     private static final String COUNTRIES_CATEGORY_COMMAND = "2";
     private static final String ANIMALS_CATEGORY_COMMAND = "3";
     private static final String RANDOM_CATEGORY_COMMAND = "4";
+    private static final String INPUT_PROMPT = ">>> ";
+    private static final String PROMPT_TEMPLATE = "%s\n>>>";
     private final Dialog dialog;
     private final Display infoDisplay;
     private final Display errorDisplay;
@@ -47,7 +49,7 @@ public class HangmanGameLauncher {
         MessageCenter messageCenter,
         DialogCenter dialogCenter
     ) {
-        this.dialog = new LauncherMinMaxDialog(infoDisplay::show, errorDisplay::show, dialogCenter, ">>> ", 2, 1);
+        this.dialog = new LauncherMinMaxDialog(infoDisplay::show, errorDisplay::show, dialogCenter, INPUT_PROMPT, 2, 1);
         this.infoDisplay = infoDisplay;
         this.errorDisplay = errorDisplay;
         this.messageCenter = messageCenter;
@@ -84,31 +86,30 @@ public class HangmanGameLauncher {
         switch (playerInput) {
             case START_NEW_GAME_COMMAND -> startNewGame();
             case EXIT_COMMAND -> exit();
-            default -> errorDisplay.show(messageCenter.get(MessageKey.INVALID_COMMAND.section, MessageKey.INVALID_COMMAND.key));
+            default -> errorDisplay.show(
+                messageCenter.get(MessageKey.INVALID_COMMAND.section, MessageKey.INVALID_COMMAND.key));
         }
     }
 
     private void startNewGame() {
         Optional<Category> categoryOptional = getCategory();
-        if (categoryOptional.isEmpty()) {
-            return;
+        Category category = null;
+        if (categoryOptional.isPresent()) {
+            category = categoryOptional.get();
+            this.wordRepository = new FileWordRepository("words", "%s", language, category);
         }
 
-        Category category = categoryOptional.get();
-        this.wordRepository = new FileWordRepository("words", "%s", language, category);
-
         Optional<HiddenWord> wordOptional = getHiddenWord();
-        if (wordOptional.isEmpty()) {
-            return;
+        HiddenWord word = null;
+        if (wordOptional.isPresent()) {
+            word = wordOptional.get();
         }
 
         Optional<Difficult> difficultOptional = getDifficult();
-        if (difficultOptional.isEmpty()) {
-            return;
+        Difficult difficult = null;
+        if (difficultOptional.isPresent()) {
+            difficult = difficultOptional.get();
         }
-
-        HiddenWord word = wordOptional.get();
-        Difficult difficult = difficultOptional.get();
 
         HangmanSession hangmanSession = createHangmanSession(word, difficult, category);
         hangmanSession.start();
@@ -143,7 +144,9 @@ public class HangmanGameLauncher {
 
     private void handleWordRepositoryException(String exceptionMessage) {
         errorDisplay.show(exceptionMessage);
-        errorDisplay.show(messageCenter.get(MessageKey.UNABLE_CONTINUE.section, MessageKey.UNABLE_CONTINUE.key));
+        errorDisplay.show(
+            messageCenter.get(MessageKey.CANT_CONTINUE.section, MessageKey.CANT_CONTINUE.key)
+        );
         exit();
     }
 
@@ -166,12 +169,11 @@ public class HangmanGameLauncher {
     }
 
     private String getDifficultMessage() {
-        String difficultTemplate = messageCenter.get(MessageKey.DIFFICULT_TEMPLATE.section, MessageKey.DIFFICULT_TEMPLATE.key);
-        return String.format("""
-            %s
-            >>>""", difficultTemplate.formatted(
-            EASY_DIFFICULT_COMMAND, Difficult.EASY.MAX_ATTEMPTS,
-            CLASSIC_DIFFICULT_COMMAND, Difficult.CLASSIC.MAX_ATTEMPTS));
+        String difficultTemplate =
+            messageCenter.get(MessageKey.DIFFICULT_TEMPLATE.section, MessageKey.DIFFICULT_TEMPLATE.key);
+        return String.format(PROMPT_TEMPLATE, difficultTemplate.formatted(
+            EASY_DIFFICULT_COMMAND, Difficult.EASY.maxAttempts,
+            CLASSIC_DIFFICULT_COMMAND, Difficult.CLASSIC.maxAttempts));
     }
 
     private Optional<Category> getCategory() {
@@ -198,10 +200,9 @@ public class HangmanGameLauncher {
     }
 
     private String getCategoryMessage() {
-        String categoryTemplate = messageCenter.get(MessageKey.CATEGORY_TEMPLATE.section, MessageKey.CATEGORY_TEMPLATE.key);
-        return String.format("""
-            %s
-            >>>""", categoryTemplate.formatted(
+        String categoryTemplate =
+            messageCenter.get(MessageKey.CATEGORY_TEMPLATE.section, MessageKey.CATEGORY_TEMPLATE.key);
+        return String.format(PROMPT_TEMPLATE, categoryTemplate.formatted(
             NATURE_CATEGORY_COMMAND,
             COUNTRIES_CATEGORY_COMMAND,
             ANIMALS_CATEGORY_COMMAND,
@@ -209,7 +210,8 @@ public class HangmanGameLauncher {
     }
 
     private HangmanSession createHangmanSession(HiddenWord word, Difficult difficult, Category category) {
-        Dialog sessionDialog = new LetterDialog(infoDisplay::show, errorDisplay::show, dialogCenter, language, ">>> ");
+        Dialog sessionDialog =
+            new LetterDialog(infoDisplay::show, errorDisplay::show, dialogCenter, language, INPUT_PROMPT);
         return new HangmanSession(difficult, word, category, sessionDialog, infoDisplay, errorDisplay, messageCenter);
     }
 
@@ -224,7 +226,7 @@ public class HangmanGameLauncher {
         CATEGORY_TEMPLATE("category_template"),
         WELCOME("welcome"),
         EXIT("exit"),
-        UNABLE_CONTINUE("unable_continue"),
+        CANT_CONTINUE("cant_continue"),
         OPEN_FILE_ERROR("open_file_error"),
         READ_FILE_ERROR("read_file_error"),
         EMPTY_WORD_LIST("empty_word_list"),

@@ -6,7 +6,7 @@ public class LanguageMessageMapper extends AbstractOptionMessageMapper {
     private static final String INVALID_LANGUAGE = "Invalid language";
 
     public LanguageMessageMapper() {
-        super((section, key) -> "Invalid language");
+        super((section, key) -> INVALID_LANGUAGE);
     }
 
     @Override

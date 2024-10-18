@@ -10,7 +10,8 @@ public class LauncherMinMaxMessageMapper extends AbstractMinMaxMessageMapper {
 
     @Override
     protected String messageMoreCharactersInputException() {
-        return dialogCenter.get(MessageKey.ALLOWED_ONLY_ONE_CHARACTER.section, MessageKey.ALLOWED_ONLY_ONE_CHARACTER.key);
+        return dialogCenter.get(MessageKey.ALLOWED_ONLY_ONE_CHARACTER.section,
+            MessageKey.ALLOWED_ONLY_ONE_CHARACTER.key);
     }
 
     @Override

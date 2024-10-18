@@ -22,27 +22,25 @@ import lombok.experimental.UtilityClass;
 public class Main {
     private static final String UNABLE_GET_LOCALIZATION_FILE = "Unable to get localization file";
     private static final String LEAVING_THE_GAME = "Leaving the game...";
+    private static final String LANGUAGE_PATH_TEMPLATE = "lang/%s";
 
     public static void main(String[] args) {
         Display display = new InfoDisplay();
         Language language = inputLanguage(display::show);
 
         Optional<FileMessageCenter> messageCenterOptional =
-            getMessageCenter("lang/%s", "%s_messages.ini", language, display);
-        if (messageCenterOptional.isEmpty()) {
-            return;
-        }
+            getMessageCenter(LANGUAGE_PATH_TEMPLATE, "%s_messages.ini", language, display);
         Optional<FileDialogCenter> dialogCenterOptional =
-            getDialogCenter("lang/%s", "%s_dialogs.ini", language, display);
-        if (dialogCenterOptional.isEmpty()) {
-            return;
-        }
-        DialogCenter dialogCenter = dialogCenterOptional.get();
-        MessageCenter messageCenter = messageCenterOptional.get();
+            getDialogCenter(LANGUAGE_PATH_TEMPLATE, "%s_dialogs.ini", language, display);
 
-        HangmanGameLauncher hangmanGameLauncher =
-            new HangmanGameLauncher(display, language, messageCenter, dialogCenter);
-        hangmanGameLauncher.start();
+        if (messageCenterOptional.isPresent() && dialogCenterOptional.isPresent()) {
+            DialogCenter dialogCenter = dialogCenterOptional.get();
+            MessageCenter messageCenter = messageCenterOptional.get();
+
+            HangmanGameLauncher hangmanGameLauncher =
+                new HangmanGameLauncher(display, language, messageCenter, dialogCenter);
+            hangmanGameLauncher.start();
+        }
     }
 
     private static Optional<FileMessageCenter> getMessageCenter(
