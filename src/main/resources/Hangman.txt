@@ -1,0 +1,1755 @@
+└───src
+    ├───main
+    │   ├───java
+    │   │   └───backend
+    │   │       └───academy
+    │   │           │   Main.java
+    │   │           │   
+    │   │           ├───constant
+    │   │           │       Language.java
+    │   │           │       
+    │   │           ├───dialogs
+    │   │           │   ├───categorydialog
+    │   │           │   │       CategoryDialog.java
+    │   │           │   │       CategoryMessageMapper.java
+    │   │           │   │       
+    │   │           │   ├───common
+    │   │           │   │   │   Printer.java
+    │   │           │   │   │   
+    │   │           │   │   ├───dialog
+    │   │           │   │   │       AbstractDialog.java
+    │   │           │   │   │       Dialog.java
+    │   │           │   │   │       
+    │   │           │   │   ├───exception
+    │   │           │   │   │       MoreCharactersInputException.java
+    │   │           │   │   │       
+    │   │           │   │   ├───messagemapper
+    │   │           │   │   │       AbstractMessageMapper.java
+    │   │           │   │   │       AbstractMinMaxMessageMapper.java
+    │   │           │   │   │       AbstractOptionMessageMapper.java
+    │   │           │   │   │       MessageMapper.java
+    │   │           │   │   │       
+    │   │           │   │   └───validator
+    │   │           │   │           AbstractLetterValidator.java
+    │   │           │   │           Validator.java
+    │   │           │   │           
+    │   │           │   ├───dialogcenter
+    │   │           │   │   │   DialogCenter.java
+    │   │           │   │   │   FileDialogCenter.java
+    │   │           │   │   │   
+    │   │           │   │   └───exception
+    │   │           │   │           MessageNotFoundException.java
+    │   │           │   │           UnableGetDialogCenterException.java
+    │   │           │   │           
+    │   │           │   ├───difficultdialog
+    │   │           │   │       DifficultDialog.java
+    │   │           │   │       DifficultMessageMapper.java
+    │   │           │   │       
+    │   │           │   ├───languagedialog
+    │   │           │   │   │   LanguageDialog.java
+    │   │           │   │   │   LanguageMessageMapper.java
+    │   │           │   │   │   
+    │   │           │   │   └───exception
+    │   │           │   │           InvalidLanguageException.java
+    │   │           │   │           
+    │   │           │   ├───letterdialog
+    │   │           │   │   │   LetterDialog.java
+    │   │           │   │   │   LetterMessageMapper.java
+    │   │           │   │   │   
+    │   │           │   │   ├───en
+    │   │           │   │   │       EnLetterValidator.java
+    │   │           │   │   │       
+    │   │           │   │   ├───exception
+    │   │           │   │   │       NotLetterException.java
+    │   │           │   │   │       NotLetterInLanguageException.java
+    │   │           │   │   │       
+    │   │           │   │   └───ru
+    │   │           │   │           RuLetterValidator.java
+    │   │           │   │           
+    │   │           │   ├───minmaxdialog
+    │   │           │   │   │   MinMaxDialog.java
+    │   │           │   │   │   MinMaxMessageMapper.java
+    │   │           │   │   │   MinMaxValidator.java
+    │   │           │   │   │   
+    │   │           │   │   ├───exception
+    │   │           │   │   │       NotDigitException.java
+    │   │           │   │   │       NumberOutOfRangeException.java
+    │   │           │   │   │       NumberValidationException.java
+    │   │           │   │   │       
+    │   │           │   │   └───launcherminmaxdialog
+    │   │           │   │           LauncherMinMaxDialog.java
+    │   │           │   │           LauncherMinMaxMessageMapper.java
+    │   │           │   │           
+    │   │           │   └───optiondialog
+    │   │           │       │   OptionDialog.java
+    │   │           │       │   OptionMessageMapper.java
+    │   │           │       │   OptionValidator.java
+    │   │           │       │   
+    │   │           │       └───exception
+    │   │           │               InputDoesNotMatchWithOptionsException.java
+    │   │           │               
+    │   │           ├───display
+    │   │           │       Display.java
+    │   │           │       InfoDisplay.java
+    │   │           │       
+    │   │           ├───exception
+    │   │           │       EmptyWordListException.java
+    │   │           │       InvalidWordException.java
+    │   │           │       NoSuchLetterException.java
+    │   │           │       OpenWordsFileException.java
+    │   │           │       ReadWordsFileException.java
+    │   │           │       
+    │   │           ├───launcher
+    │   │           │       HangmanGameLauncher.java
+    │   │           │       
+    │   │           ├───messagecenter
+    │   │           │   │   FileMessageCenter.java
+    │   │           │   │   MessageCenter.java
+    │   │           │   │   
+    │   │           │   └───exception
+    │   │           │           MessageNotFoundException.java
+    │   │           │           UnableGetMessageCenterException.java
+    │   │           │           
+    │   │           ├───picture
+    │   │           │       EasyHangmanPicture.java
+    │   │           │       HangmanPicture.java
+    │   │           │       PictureProvider.java
+    │   │           │       
+    │   │           ├───repository
+    │   │           │       FileWordRepository.java
+    │   │           │       WordRepository.java
+    │   │           │       
+    │   │           ├───session
+    │   │           │       HangmanSession.java
+    │   │           │       HiddenWord.java
+    │   │           │       
+    │   │           ├───util
+    │   │           │   └───inireader
+    │   │           │       │   IniReader.java
+    │   │           │       │   
+    │   │           │       └───exception
+    │   │           │               IniValueNotFoundException.java
+    │   │           │               OpenIniFileException.java
+    │   │           │               ReadIniFileException.java
+    │   │           │               
+    │   │           └───validator
+    │   │                   WordRepositoryValidator.java
+    │   │                   
+    │   └───resources
+    │       │   log4j2.xml
+    │       │   
+    │       ├───lang
+    │       │   ├───en
+    │       │   │       en_dialogs.ini
+    │       │   │       en_messages.ini
+    │       │   │       
+    │       │   └───ru
+    │       │           ru_dialogs.ini
+    │       │           ru_messages.ini
+    │       │           
+    │       └───words
+    │           │   words_en.txt
+    │           │   words_ru.txt
+    │           │   
+    │           ├───en
+    │           │       animals.txt
+    │           │       countries.txt
+    │           │       nature.txt
+    │           │       random.txt
+    │           │       
+    │           └───ru
+    │                   animals.txt
+    │                   countries.txt
+    │                   nature.txt
+    │                   random.txt
+    │                   
+                                
+
+
+constant
+Language
+public enum Language {
+    RU,
+    EN,
+}
+
+dialogs
+categorydialog
+CategoryDialog
+public class CategoryDialog extends OptionDialog {
+    public CategoryDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        String title,
+        String... options
+    ) {
+        super(infoPrinter, errorPrinter, new CategoryMessageMapper(dialogCenter), title, options);
+    }
+
+    public CategoryDialog(Printer printer, String title, DialogCenter dialogCenter, String... options) {
+        super(printer, title, new CategoryMessageMapper(dialogCenter), options);
+    }
+}
+
+CategoryMessageMapper
+public class CategoryMessageMapper extends AbstractOptionMessageMapper {
+    public CategoryMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    protected String messageInputDoesNotMatchWithOptions() {
+        return dialogCenter.get(MessageKey.INVALID_CATEGORY.section, MessageKey.INVALID_CATEGORY.key);
+    }
+
+    private enum MessageKey {
+        INVALID_CATEGORY("invalid_category");
+
+        public final String section = "CategoryMessageMapper";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+common
+dialog
+AbstractDialog
+public abstract class AbstractDialog implements Dialog {
+    private final Printer infoPrinter;
+    private final Printer errorPrinter;
+    private final String title;
+    private final Validator<String> validator;
+    private final MessageMapper messageMapper;
+
+    public AbstractDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        String title,
+        MessageMapper messageMapper,
+        Validator<String> validator
+    ) {
+        this.infoPrinter = infoPrinter;
+        this.errorPrinter = errorPrinter;
+        this.title = title;
+        this.validator = validator;
+        this.messageMapper = messageMapper;
+    }
+
+    public AbstractDialog(Printer printer, String title, MessageMapper messageMapper, Validator<String> validator) {
+        this(printer, printer, title, messageMapper, validator);
+    }
+
+    @Override
+    public String getInput() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            infoPrinter.print(title);
+            String playerInput = readInput(scanner);
+            try {
+                validator.validate(playerInput);
+                return playerInput;
+            } catch (RuntimeException e) {
+                String message = messageMapper.apply(e);
+                errorPrinter.print(message);
+            }
+        }
+    }
+
+    private String readInput(Scanner scanner) {
+        String key = scanner.nextLine();
+        return key.trim();
+    }
+}
+
+Dialog
+public interface Dialog {
+    String getInput();
+}
+
+exception
+MoreCharactersInputException
+messagemapper
+AbstractMessageMapper
+public abstract class AbstractMessageMapper {
+    protected final DialogCenter dialogCenter;
+
+    public AbstractMessageMapper(DialogCenter dialogCenter) {
+        this.dialogCenter = dialogCenter;
+    }
+}
+AbstractMinMaxMessageMapper
+public abstract class AbstractMinMaxMessageMapper extends AbstractMessageMapper implements MessageMapper {
+    public AbstractMinMaxMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    public String apply(RuntimeException e) {
+        try {
+            throw e;
+        } catch (MoreCharactersInputException exc) {
+            return messageMoreCharactersInputException();
+        } catch (NotDigitException exc) {
+            return messageNotDigitException();
+        } catch (NumberOutOfRangeException exc) {
+            return messageNumberOutOfRangeException();
+        } catch (RuntimeException exc) {
+            throw new IllegalArgumentException("Illegal exception: " + exc);
+        }
+    }
+
+    protected abstract String messageMoreCharactersInputException();
+
+    protected abstract String messageNotDigitException();
+
+    protected abstract String messageNumberOutOfRangeException();
+}
+
+AbstractOptionMessageMapper
+public abstract class AbstractOptionMessageMapper extends AbstractMessageMapper implements MessageMapper {
+    public AbstractOptionMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    public String apply(RuntimeException e) {
+        try {
+            throw e;
+        } catch (InputDoesNotMatchWithOptionsException exc) {
+            return messageInputDoesNotMatchWithOptions();
+        } catch (RuntimeException exc) {
+            throw new IllegalArgumentException("Illegal exception: " + exc);
+        }
+    }
+
+    protected abstract String messageInputDoesNotMatchWithOptions();
+}
+MessageMapper
+public interface MessageMapper extends Function<RuntimeException, String> {
+}
+
+validator
+AbstractLetterValidator
+public abstract class AbstractLetterValidator implements Validator<String> {
+    private final UnicodeBlock unicodeBlock;
+
+    protected AbstractLetterValidator(UnicodeBlock unicodeBlock) {
+        this.unicodeBlock = unicodeBlock;
+    }
+
+    @Override
+    public void validate(String playerInput) {
+        if (playerInput.length() != 1) {
+            throw new MoreCharactersInputException();
+        }
+        char typedLetter = playerInput.charAt(0);
+        if (!isLetter(typedLetter)) {
+            throw new NotLetterException();
+        }
+        if (!isLetterInLanguage(typedLetter)) {
+            throw new NotLetterInLanguageException();
+        }
+    }
+
+    public boolean isLetterInLanguage(char letter) {
+        return isLetter(letter) && UnicodeBlock.of(letter).equals(unicodeBlock);
+    }
+
+    public boolean isLetter(char letter) {
+        return Character.isLetter(letter);
+    }
+}
+
+Validator
+public interface Validator<T> {
+    void validate(T input);
+}
+
+Printer
+public interface Printer {
+    void print(String text);
+}
+
+dialogcenter
+exception
+MessageNotFoundException
+UnableGetDialogCenterException
+DialogCenter
+public interface DialogCenter {
+    String get(String section, String key);
+}
+FileDialogCenter
+public class FileDialogCenter implements DialogCenter {
+    private final IniReader iniReader;
+
+    public FileDialogCenter(String directory, String filenameTemplate, Language language) {
+        String languageName = language.name().toLowerCase();
+        String filename = filenameTemplate.formatted(languageName);
+        String iniFilename = String.format("%s/%s", directory.formatted(languageName), filename);
+        this.iniReader = getIniReader(iniFilename);
+    }
+
+    private IniReader getIniReader(String iniFilename) {
+        try {
+            return new IniReader(iniFilename);
+        } catch (OpenIniFileException | ReadIniFileException e) {
+            throw new UnableGetDialogCenterException(e);
+        }
+    }
+
+    @Override
+    public String get(String section, String key) {
+        try {
+            return iniReader.getValue(section, key);
+        } catch (IniValueNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+
+difficultdialog
+DifficultDialog
+public class DifficultDialog extends OptionDialog {
+    public DifficultDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        String title,
+        String... options
+    ) {
+        super(infoPrinter, errorPrinter, new DifficultMessageMapper(dialogCenter), title, options);
+    }
+
+    public DifficultDialog(Printer printer, String title, DialogCenter dialogCenter, String... options) {
+        super(printer, title, new DifficultMessageMapper(dialogCenter), options);
+    }
+
+}
+
+DifficultMessageMapper
+public class DifficultMessageMapper extends AbstractOptionMessageMapper {
+    public DifficultMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    protected String messageInputDoesNotMatchWithOptions() {
+        return dialogCenter.get(MessageKey.INVALID_DIFFICULT.section, MessageKey.INVALID_DIFFICULT.key);
+    }
+
+    private enum MessageKey {
+        INVALID_DIFFICULT("invalid_difficult");
+
+        public final String section = "DifficultMessageMapper";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+
+languagedialog
+exception
+InvalidLanguageException
+LanguageDialog
+public class LanguageDialog extends OptionDialog {
+    private static final String[] LANGUAGES = Arrays.stream(Language.values()).map(Enum::name).toArray(String[]::new);
+
+    public LanguageDialog(Printer infoPrinter, Printer errorPrinter, String title) {
+        super(infoPrinter, errorPrinter, new LanguageMessageMapper(), title, LANGUAGES);
+    }
+
+    public LanguageDialog(Printer printer, String title) {
+        super(printer, title, new LanguageMessageMapper(), LANGUAGES);
+    }
+}
+LanguageMessageMapper
+public class LanguageMessageMapper extends AbstractOptionMessageMapper {
+    private static final String INVALID_LANGUAGE = "Invalid language";
+
+    public LanguageMessageMapper() {
+        super((section, key) -> INVALID_LANGUAGE);
+    }
+
+    @Override
+    protected String messageInputDoesNotMatchWithOptions() {
+        return INVALID_LANGUAGE;
+    }
+}
+letterdialog
+en
+EnLetterValidator
+public class EnLetterValidator extends AbstractLetterValidator {
+    public EnLetterValidator() {
+        super(UnicodeBlock.BASIC_LATIN);
+    }
+}
+exception
+NotLetterException
+NotLetterInLanguageException
+ru
+RuLetterValidator
+public class RuLetterValidator extends AbstractLetterValidator {
+    public RuLetterValidator() {
+        super(UnicodeBlock.CYRILLIC);
+    }
+}
+LetterDialog
+public class LetterDialog extends AbstractDialog {
+    public LetterDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        Language language,
+        String title
+    ) {
+        super(infoPrinter, errorPrinter, title, new LetterMessageMapper(dialogCenter), createValidator(language));
+    }
+
+    private static Validator<String> createValidator(Language language) {
+        return switch (language) {
+            case RU -> new RuLetterValidator();
+            case EN -> new EnLetterValidator();
+        };
+    }
+}
+LetterMessageMapper
+public class LetterMessageMapper extends AbstractMessageMapper implements MessageMapper {
+    public LetterMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    public String apply(RuntimeException e) {
+        try {
+            throw e;
+        } catch (NotLetterException exc) {
+            return dialogCenter.get(MessageKey.ALLOWED_ONLY_LETTERS.section, MessageKey.ALLOWED_ONLY_LETTERS.key);
+        } catch (NotLetterInLanguageException exc) {
+            return dialogCenter.get(MessageKey.LETTER_NOT_IN_LANGUAGE.section, MessageKey.LETTER_NOT_IN_LANGUAGE.key);
+        } catch (MoreCharactersInputException exc) {
+            return dialogCenter.get(MessageKey.MORE_LETTERS.section, MessageKey.MORE_LETTERS.key);
+        } catch (RuntimeException exc) {
+            throw new IllegalArgumentException("Illegal exception: " + exc);
+        }
+    }
+
+    private enum MessageKey {
+        ALLOWED_ONLY_LETTERS("allowed_only_letters"),
+        LETTER_NOT_IN_LANGUAGE("letter_not_in_language"),
+        MORE_LETTERS("more_letters");
+
+        public final String section = "LetterMessageMapper";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+
+minmaxdialog
+exception
+NotDigitException
+NumberOutOfRangeException
+NumberValidationException
+launcherminmaxdialog
+LauncherMinMaxDialog
+public class LauncherMinMaxDialog extends MinMaxDialog {
+    public LauncherMinMaxDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        String title,
+        int max,
+        int min
+    ) {
+        super(infoPrinter, errorPrinter, title, new LauncherMinMaxMessageMapper(dialogCenter), min, max);
+    }
+}
+LauncherMinMaxMessageMapper
+public class LauncherMinMaxMessageMapper extends AbstractMinMaxMessageMapper {
+    public LauncherMinMaxMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    protected String messageMoreCharactersInputException() {
+        return dialogCenter.get(MessageKey.ALLOWED_ONLY_ONE_CHARACTER.section,
+            MessageKey.ALLOWED_ONLY_ONE_CHARACTER.key);
+    }
+
+    @Override
+    protected String messageNotDigitException() {
+        return dialogCenter.get(MessageKey.ALLOWED_ONLY_DIGIT.section, MessageKey.ALLOWED_ONLY_DIGIT.key);
+    }
+
+    @Override
+    protected String messageNumberOutOfRangeException() {
+        return dialogCenter.get(MessageKey.ALLOWED_ONLY_MENU_NUMBER.section, MessageKey.ALLOWED_ONLY_MENU_NUMBER.key);
+    }
+
+    private enum MessageKey {
+        ALLOWED_ONLY_ONE_CHARACTER("allowed_only_one_character"),
+        ALLOWED_ONLY_DIGIT("allowed_only_digit"),
+        ALLOWED_ONLY_MENU_NUMBER("allowed_only_menu_number");
+
+        public final String section = "LauncherMinMaxMessageMapper";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+
+MinMaxDialog
+public class MinMaxDialog extends AbstractDialog {
+    public MinMaxDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        String title,
+        int min,
+        int max
+    ) {
+        super(infoPrinter, errorPrinter, title, new MinMaxMessageMapper(dialogCenter), new MinMaxValidator(min, max));
+    }
+
+    public MinMaxDialog(Printer printer, DialogCenter dialogCenter, String title, int min, int max) {
+        super(printer, title, new MinMaxMessageMapper(dialogCenter), new MinMaxValidator(min, max));
+    }
+
+    protected MinMaxDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        String title,
+        MessageMapper messageMapper,
+        int min,
+        int max
+    ) {
+        super(infoPrinter, errorPrinter, title, messageMapper, new MinMaxValidator(min, max));
+    }
+
+    protected MinMaxDialog(Printer printer, String title, MessageMapper messageMapper, int min, int max) {
+        super(printer, title, messageMapper, new MinMaxValidator(min, max));
+    }
+}
+
+MinMaxMessageMapper
+public class MinMaxMessageMapper extends AbstractMinMaxMessageMapper {
+    public MinMaxMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    protected String messageMoreCharactersInputException() {
+        return dialogCenter.get(MessageKey.MORE_CHARACTERS.section, MessageKey.MORE_CHARACTERS.key);
+    }
+
+    @Override
+    protected String messageNotDigitException() {
+        return dialogCenter.get(MessageKey.NOT_DIGIT.section, MessageKey.NOT_DIGIT.key);
+    }
+
+    @Override
+    protected String messageNumberOutOfRangeException() {
+        return dialogCenter.get(MessageKey.NUMBER_OUT_OF_RANGE.section, MessageKey.NUMBER_OUT_OF_RANGE.key);
+    }
+
+    private enum MessageKey {
+        MORE_CHARACTERS("more_characters"),
+        NOT_DIGIT("not_digit"),
+        NUMBER_OUT_OF_RANGE("number_out_of_range");
+
+        public final String section = "MinMaxMessageMapper";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+
+MinMaxValidator
+public class MinMaxValidator implements Validator<String> {
+    private final int min;
+    private final int max;
+
+    public MinMaxValidator(int min, int max) {
+        this.min = min;
+        this.max = max;
+    }
+
+    @Override
+    public void validate(String playerInput) {
+        if (playerInput.length() != 1) {
+            throw new MoreCharactersInputException();
+        }
+
+        char typedChar = playerInput.charAt(0);
+        if (!isDigit(typedChar)) {
+            throw new NotDigitException();
+        }
+
+        int typedNumber = tryParseInt(playerInput);
+        if (typedNumber < min || typedNumber > max) {
+            throw new NumberOutOfRangeException(typedNumber);
+        }
+    }
+
+    private int tryParseInt(String playerInput) {
+        try {
+            return Integer.parseInt(playerInput);
+        } catch (NumberFormatException e) {
+            throw new NotDigitException(e);
+        }
+    }
+
+    private boolean isDigit(char ch) {
+        return Character.isDigit(ch);
+    }
+}
+
+
+optiondialog
+exception
+InputDoesNotMatchWithOptionsException
+OptionDialog
+public class OptionDialog extends AbstractDialog {
+    public OptionDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        DialogCenter dialogCenter,
+        String title,
+        String... options
+    ) {
+        super(infoPrinter, errorPrinter, title, new OptionMessageMapper(dialogCenter),
+            new OptionValidator(List.of(options)));
+    }
+
+    public OptionDialog(Printer printer, DialogCenter dialogCenter, String title, String... options) {
+        super(printer, title, new OptionMessageMapper(dialogCenter), new OptionValidator(List.of(options)));
+    }
+
+    protected OptionDialog(
+        Printer infoPrinter,
+        Printer errorPrinter,
+        MessageMapper messageMapper,
+        String title,
+        String... options
+    ) {
+        super(infoPrinter, errorPrinter, title, messageMapper, new OptionValidator(List.of(options)));
+    }
+
+    protected OptionDialog(Printer printer, String title, MessageMapper messageMapper, String... options) {
+        super(printer, title, messageMapper, new OptionValidator(List.of(options)));
+    }
+}
+
+OptionMessageMapper
+public class OptionMessageMapper extends AbstractOptionMessageMapper {
+    public OptionMessageMapper(DialogCenter dialogCenter) {
+        super(dialogCenter);
+    }
+
+    @Override
+    protected String messageInputDoesNotMatchWithOptions() {
+        return dialogCenter.get(MessageKey.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.section,
+            MessageKey.INPUT_DOES_NOT_MATCH_WITH_OPTIONS.key);
+    }
+
+    private enum MessageKey {
+        INPUT_DOES_NOT_MATCH_WITH_OPTIONS("input_does_not_match_with_options");
+
+        public final String section = "OptionMessageMapper";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+
+OptionValidator
+public class OptionValidator implements Validator<String> {
+    private final List<String> options;
+
+    public OptionValidator(List<String> options) {
+        this.options = options;
+    }
+
+    @Override
+    public void validate(String input) {
+        if (!containsIgnoreCase(options, input)) {
+            throw new InputDoesNotMatchWithOptionsException();
+        }
+    }
+
+    private boolean containsIgnoreCase(List<String> options, String input) {
+        for (String option : options) {
+            if (input.equalsIgnoreCase(option)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+display
+Display
+public interface Display {
+    void show(String text);
+}
+InfoDisplay
+public class InfoDisplay implements Display {
+    private final PrintStream out;
+
+    public InfoDisplay() {
+        this(System.out);
+    }
+
+    public InfoDisplay(PrintStream out) {
+        this.out = out;
+    }
+
+    @Override
+    public void show(String text) {
+        out.println(text);
+    }
+}
+exception
+EmptyWordListException 
+InvalidWordException 
+NoSuchLetterException
+OpenWordsFileException
+ReadWordsFileException
+launcher
+HangmanGameLauncher
+public class HangmanGameLauncher {
+    private static final String START_NEW_GAME_COMMAND = "1";
+    private static final String EXIT_COMMAND = "2";
+    private static final String EASY_DIFFICULT_COMMAND = "1";
+    private static final String CLASSIC_DIFFICULT_COMMAND = "2";
+    private static final String NATURE_CATEGORY_COMMAND = "1";
+    private static final String COUNTRIES_CATEGORY_COMMAND = "2";
+    private static final String ANIMALS_CATEGORY_COMMAND = "3";
+    private static final String RANDOM_CATEGORY_COMMAND = "4";
+    private static final String INPUT_PROMPT = ">>> ";
+    private static final String PROMPT_TEMPLATE = "%s\n>>>";
+    private final Dialog dialog;
+    private final Display infoDisplay;
+    private final Display errorDisplay;
+    private final MessageCenter messageCenter;
+    private final DialogCenter dialogCenter;
+    private final Language language;
+    private WordRepository wordRepository;
+    private boolean running;
+
+    public HangmanGameLauncher(
+        Display infoDisplay,
+        Display errorDisplay,
+        Language language,
+        MessageCenter messageCenter,
+        DialogCenter dialogCenter
+    ) {
+        this.dialog = new LauncherMinMaxDialog(infoDisplay::show, errorDisplay::show, dialogCenter, INPUT_PROMPT, 2, 1);
+        this.infoDisplay = infoDisplay;
+        this.errorDisplay = errorDisplay;
+        this.messageCenter = messageCenter;
+        this.dialogCenter = dialogCenter;
+        this.language = language;
+    }
+
+    public HangmanGameLauncher(
+        Display display,
+        Language language,
+        MessageCenter messageCenter,
+        DialogCenter dialogCenter
+    ) {
+        this(display, display, language, messageCenter, dialogCenter);
+    }
+
+    public void start() {
+        running = true;
+        infoDisplay.show(messageCenter.get(MessageKey.WELCOME.section, MessageKey.WELCOME.key));
+
+        while (running) {
+            displayStartMessage();
+            String playerInput = dialog.getInput();
+            chooseAction(playerInput);
+        }
+    }
+
+    private void displayStartMessage() {
+        String startTemplate = messageCenter.get(MessageKey.START_TEMPLATE.section, MessageKey.START_TEMPLATE.key);
+        infoDisplay.show(startTemplate.formatted(START_NEW_GAME_COMMAND, EXIT_COMMAND));
+    }
+
+    private void chooseAction(String playerInput) {
+        switch (playerInput) {
+            case START_NEW_GAME_COMMAND -> startNewGame();
+            case EXIT_COMMAND -> exit();
+            default -> errorDisplay.show(
+                messageCenter.get(MessageKey.INVALID_COMMAND.section, MessageKey.INVALID_COMMAND.key));
+        }
+    }
+
+    private void startNewGame() {
+        Optional<Category> categoryOptional = getCategory();
+        Category category = null;
+        if (categoryOptional.isPresent()) {
+            category = categoryOptional.get();
+            this.wordRepository = new FileWordRepository("words", "%s", language, category);
+        }
+
+        Optional<HiddenWord> wordOptional = getHiddenWord();
+        HiddenWord word = null;
+        if (wordOptional.isPresent()) {
+            word = wordOptional.get();
+        }
+
+        Optional<Difficult> difficultOptional = getDifficult();
+        Difficult difficult = null;
+        if (difficultOptional.isPresent()) {
+            difficult = difficultOptional.get();
+        }
+
+        HangmanSession hangmanSession = createHangmanSession(word, difficult, category);
+        hangmanSession.start();
+    }
+
+    private Optional<HiddenWord> getHiddenWord() {
+        try {
+            String text = wordRepository.get();
+            HiddenWord hiddenWord = new HiddenWord(text);
+            return Optional.of(hiddenWord);
+        } catch (OpenWordsFileException e) {
+            handleWordRepositoryException(
+                messageCenter.get(MessageKey.OPEN_FILE_ERROR.section, MessageKey.OPEN_FILE_ERROR.key)
+            );
+        } catch (ReadWordsFileException e) {
+            handleWordRepositoryException(
+                messageCenter.get(MessageKey.READ_FILE_ERROR.section, MessageKey.READ_FILE_ERROR.key)
+            );
+        } catch (EmptyWordListException e) {
+            handleWordRepositoryException(
+                messageCenter.get(MessageKey.EMPTY_WORD_LIST.section, MessageKey.EMPTY_WORD_LIST.key)
+            );
+        } catch (InvalidWordException e) {
+            String invalidWordMessage = messageCenter.get(
+                MessageKey.INVALID_WORD_TEMPLATE.section,
+                MessageKey.INVALID_WORD_TEMPLATE.key
+            ).formatted(e.getInvalidWord());
+            handleWordRepositoryException(invalidWordMessage);
+        }
+        return Optional.empty();
+    }
+
+    private void handleWordRepositoryException(String exceptionMessage) {
+        errorDisplay.show(exceptionMessage);
+        errorDisplay.show(
+            messageCenter.get(MessageKey.CANT_CONTINUE.section, MessageKey.CANT_CONTINUE.key)
+        );
+        exit();
+    }
+
+    private Optional<Difficult> getDifficult() {
+        String difficultInput = inputDifficult();
+        return switch (difficultInput) {
+            case EASY_DIFFICULT_COMMAND -> Optional.of(Difficult.EASY);
+            case CLASSIC_DIFFICULT_COMMAND -> Optional.of(Difficult.CLASSIC);
+            default -> Optional.empty();
+        };
+    }
+
+    private String inputDifficult() {
+        String difficultDialogMessage = getDifficultMessage();
+        String[] difficultCommands = List.of(EASY_DIFFICULT_COMMAND, CLASSIC_DIFFICULT_COMMAND).toArray(String[]::new);
+        Dialog difficultDialog =
+            new DifficultDialog(infoDisplay::show, errorDisplay::show, dialogCenter, difficultDialogMessage,
+                difficultCommands);
+        return difficultDialog.getInput();
+    }
+
+    private String getDifficultMessage() {
+        String difficultTemplate =
+            messageCenter.get(MessageKey.DIFFICULT_TEMPLATE.section, MessageKey.DIFFICULT_TEMPLATE.key);
+        return String.format(PROMPT_TEMPLATE, difficultTemplate.formatted(
+            EASY_DIFFICULT_COMMAND, Difficult.EASY.maxAttempts,
+            CLASSIC_DIFFICULT_COMMAND, Difficult.CLASSIC.maxAttempts));
+    }
+
+    private Optional<Category> getCategory() {
+        String categoryInput = inputCategory();
+        return switch (categoryInput) {
+            case NATURE_CATEGORY_COMMAND -> Optional.of(Category.NATURE);
+            case COUNTRIES_CATEGORY_COMMAND -> Optional.of(Category.COUNTRIES);
+            case ANIMALS_CATEGORY_COMMAND -> Optional.of(Category.ANIMALS);
+            case RANDOM_CATEGORY_COMMAND -> Optional.of(Category.RANDOM);
+            default -> Optional.empty();
+        };
+    }
+
+    private String inputCategory() {
+        String categoryDialogMessage = getCategoryMessage();
+        String[] categoryCommands =
+            List.of(NATURE_CATEGORY_COMMAND, COUNTRIES_CATEGORY_COMMAND, ANIMALS_CATEGORY_COMMAND,
+                RANDOM_CATEGORY_COMMAND).toArray(String[]::new);
+        Dialog categoryDialog =
+            new CategoryDialog(infoDisplay::show, errorDisplay::show, dialogCenter, categoryDialogMessage,
+                categoryCommands);
+        return categoryDialog.getInput();
+
+    }
+
+    private String getCategoryMessage() {
+        String categoryTemplate =
+            messageCenter.get(MessageKey.CATEGORY_TEMPLATE.section, MessageKey.CATEGORY_TEMPLATE.key);
+        return String.format(PROMPT_TEMPLATE, categoryTemplate.formatted(
+            NATURE_CATEGORY_COMMAND,
+            COUNTRIES_CATEGORY_COMMAND,
+            ANIMALS_CATEGORY_COMMAND,
+            RANDOM_CATEGORY_COMMAND));
+    }
+
+    private HangmanSession createHangmanSession(HiddenWord word, Difficult difficult, Category category) {
+        Dialog sessionDialog =
+            new LetterDialog(infoDisplay::show, errorDisplay::show, dialogCenter, language, INPUT_PROMPT);
+        return new HangmanSession(difficult, word, category, sessionDialog, infoDisplay, errorDisplay, messageCenter);
+    }
+
+    private void exit() {
+        infoDisplay.show(messageCenter.get(MessageKey.EXIT.section, MessageKey.EXIT.key));
+        running = false;
+    }
+
+    private enum MessageKey {
+        START_TEMPLATE("start_template"),
+        DIFFICULT_TEMPLATE("difficult_template"),
+        CATEGORY_TEMPLATE("category_template"),
+        WELCOME("welcome"),
+        EXIT("exit"),
+        CANT_CONTINUE("cant_continue"),
+        OPEN_FILE_ERROR("open_file_error"),
+        READ_FILE_ERROR("read_file_error"),
+        EMPTY_WORD_LIST("empty_word_list"),
+        INVALID_COMMAND("invalid_command"),
+        INVALID_WORD_TEMPLATE("invalid_word_template");
+
+        public final String section = "Launcher";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+
+messagecenter
+exception
+MessageNotFoundException
+UnableGetMessageCenterException
+FileMessageCenter
+public class FileMessageCenter implements MessageCenter {
+    private final IniReader iniReader;
+
+    public FileMessageCenter(String directory, String filenameTemplate, Language language) {
+        String languageName = language.name().toLowerCase();
+        String filename = filenameTemplate.formatted(languageName);
+        String iniFilename = String.format("%s/%s", directory.formatted(languageName), filename);
+        this.iniReader = getIniReader(iniFilename);
+    }
+
+    private IniReader getIniReader(String iniFilename) {
+        try {
+            return new IniReader(iniFilename);
+        } catch (OpenIniFileException | ReadIniFileException e) {
+            throw new UnableGetMessageCenterException(e);
+        }
+    }
+
+    @Override
+    public String get(String section, String key) {
+        try {
+            return iniReader.getValue(section, key);
+        } catch (IniValueNotFoundException e) {
+            throw new MessageNotFoundException(e);
+        }
+    }
+}
+
+MessageCenter
+public interface MessageCenter {
+    String get(String section, String key);
+}
+picture
+EasyHangmanPicture
+public class EasyHangmanPicture implements PictureProvider {
+    private final List<String> pictures = new ArrayList<>();
+
+    public EasyHangmanPicture() {
+        pictures.add("""
+              _____
+              |   |
+              |
+              |
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |   |
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              |  /
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              |  / \\
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              | _/ \\
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              | _/ \\_
+            __|__
+            """);
+    }
+
+    @Override
+    public String get(int attemptNumber) {
+        return pictures.get(attemptNumber);
+    }
+}
+
+HangmanPicture
+public class HangmanPicture implements PictureProvider {
+    private final List<String> pictures = new ArrayList<>();
+
+    public HangmanPicture() {
+        pictures.add("""
+              _____
+              |   |
+              |
+              |
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |   |
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              |
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              |  /
+            __|__
+            """);
+        pictures.add("""
+              _____
+              |   |
+              |   O
+              |  /|\\
+              |  / \\
+            __|__
+            """);
+    }
+
+    @Override
+    public String get(int attemptNumber) {
+        return pictures.get(attemptNumber);
+    }
+}
+
+PictureProvider
+public interface PictureProvider {
+    String get(int attemptNumber);
+}
+repository
+FileWordRepository
+public class FileWordRepository implements WordRepository {
+    private final WordRepositoryValidator wordRepositoryValidator;
+    private final String filename;
+    private List<String> words;
+
+    public FileWordRepository(String directory, String filenameTemplate, Language language, Category category) {
+        this.filename =
+            String.format("/%s/%s/%s.txt", directory, language.name().toLowerCase(), category.name().toLowerCase());
+        this.wordRepositoryValidator = new WordRepositoryValidator(language);
+    }
+
+    @Override
+    public String toString() {
+        return this.filename;
+
+    }
+
+    @Override
+    public String get() {
+        if (words == null) {
+            loadWords();
+        }
+
+        int randomIndex = getRandomIndex();
+        return words.get(randomIndex);
+    }
+
+    private void loadWords() {
+        InputStream wordsFileAsStream = getWordsFileAsStream();
+        try (var reader = new BufferedReader(new InputStreamReader(wordsFileAsStream))) {
+            words = reader.lines()
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
+            wordRepositoryValidator.validate(words);
+        } catch (IOException e) {
+            throw new ReadWordsFileException(e);
+        }
+    }
+
+    private InputStream getWordsFileAsStream() {
+        InputStream resource = FileWordRepository.class.getResourceAsStream(filename);
+        if (resource == null) {
+            throw new OpenWordsFileException();
+        }
+        return resource;
+    }
+
+    private int getRandomIndex() {
+        return (int) (Math.random() * words.size());
+    }
+}
+
+WordRepository
+public interface WordRepository {
+    String get();
+}
+session
+HangmanSession
+public class HangmanSession {
+    private final HiddenWord hiddenWord;
+    private final Difficult difficult;
+    private final Category category;
+    private final Dialog dialog;
+    private final Display infoDisplay;
+    private final Display errorDisplay;
+    private final MessageCenter messageCenter;
+    private final PictureProvider pictureProvider;
+    private final Set<String> wrongLetters = new HashSet<>();
+    private int leftAttempts;
+    private boolean isSessionOn = true;
+
+    public HangmanSession(
+        Difficult difficult,
+        HiddenWord hiddenWord,
+        Category category,
+        Dialog dialog,
+        Display infoDisplay,
+        Display errorDisplay,
+        MessageCenter messageCenter
+    ) {
+        this.hiddenWord = hiddenWord;
+        this.difficult = difficult;
+        this.category = category;
+        this.dialog = dialog;
+        this.infoDisplay = infoDisplay;
+        this.errorDisplay = errorDisplay;
+        this.messageCenter = messageCenter;
+        this.leftAttempts = difficult.maxAttempts;
+        this.pictureProvider = difficult.pictureProvider;
+        displayStartMessage();
+    }
+
+    public HangmanSession(
+        Difficult difficult,
+        HiddenWord hiddenWord,
+        Dialog dialog,
+        Display display,
+        MessageCenter messageCenter,
+        Category category
+    ) {
+        this(difficult, hiddenWord, category, dialog, display, display, messageCenter);
+    }
+
+    private void displayStartMessage() {
+        infoDisplay.show(messageCenter.get(MessageKey.START.section, MessageKey.START.key));
+        infoDisplay.show(hiddenWord.getMask());
+        displayHangmanPicture();
+    }
+
+    public void start() {
+        while (isSessionOn) {
+            String letter = dialog.getInput();
+
+            Optional<String> mask = getWordMaskWithRevealedLetter(letter);
+            if (mask.isEmpty()) {
+                continue;
+            }
+            infoDisplay.show(mask.get());
+            if (hiddenWord.isGuessed()) {
+                endSession(Result.WIN);
+            }
+        }
+    }
+
+    private Optional<String> getWordMaskWithRevealedLetter(String letter) {
+        try {
+            return Optional.of(hiddenWord.revealLetter(letter));
+        } catch (RuntimeException e) {
+            handleException(e);
+            return Optional.empty();
+        }
+    }
+
+    private void handleException(RuntimeException e) {
+        String message = convertExceptionToText(e);
+        errorDisplay.show(message);
+
+        if (e instanceof NoSuchLetterException noSuchLetterException) {
+            String wrongLetter = noSuchLetterException.getWrongLetter();
+            handleWrongLetter(wrongLetter);
+        }
+    }
+
+    private String convertExceptionToText(RuntimeException e) {
+        try {
+            throw e;
+        } catch (NoSuchLetterException exc) {
+            String wrongLetter = exc.getWrongLetter();
+            String noSuchLetterTemplate =
+                messageCenter.get(MessageKey.NO_SUCH_LETTER_TEMPLATE.section, MessageKey.NO_SUCH_LETTER_TEMPLATE.key);
+            return noSuchLetterTemplate.formatted(wrongLetter);
+        } catch (RuntimeException exc) {
+            throw new IllegalArgumentException("Unable convert exception to text: " + exc);
+        }
+    }
+
+    private void handleWrongLetter(String letter) {
+        String upperCaseLetter = letter.toUpperCase();
+        if (!wrongLetters.contains(upperCaseLetter)) {
+            wrongLetters.add(upperCaseLetter);
+        } else {
+            errorDisplay.show(
+                messageCenter.get(MessageKey.LETTER_ALREADY_ENTERED.section, MessageKey.LETTER_ALREADY_ENTERED.key));
+            displayErrorMessage();
+            return;
+        }
+
+        updateLeftAttempts();
+    }
+
+    private void updateLeftAttempts() {
+        --leftAttempts;
+        if (leftAttempts == 0) {
+            endSession(Result.LOSE);
+        } else {
+            displayErrorMessage();
+        }
+        displayHangmanPicture();
+    }
+
+    private void displayErrorMessage() {
+        displayLeftAttempts();
+        displayWrongLetters();
+        infoDisplay.show(hiddenWord.getMask());
+    }
+
+    private void displayHangmanPicture() {
+        String picture = pictureProvider.get(difficult.maxAttempts - leftAttempts);
+        infoDisplay.show(picture);
+    }
+
+    private void displayWrongLetters() {
+        String errorsMessage = messageCenter.get(MessageKey.ERRORS.section, MessageKey.ERRORS.key);
+        infoDisplay.show(errorsMessage + getStringOfWrongLetters());
+    }
+
+    private String getStringOfWrongLetters() {
+        StringBuilder letters = new StringBuilder();
+        for (String letter : wrongLetters) {
+            letters.append(letter).append(" ");
+        }
+        return letters.toString();
+    }
+
+    private void displayLeftAttempts() {
+        String leftAttemptsMessage = messageCenter.get(MessageKey.LEFT_ATTEMPTS.section, MessageKey.LEFT_ATTEMPTS.key);
+        infoDisplay.show(leftAttemptsMessage + leftAttempts);
+    }
+
+    private void endSession(Result result) {
+        if (isWin(result)) {
+            displayWinMessage();
+        } else if (isLose(result)) {
+            displayLoseMessage();
+        }
+        isSessionOn = false;
+    }
+
+    private void displayWinMessage() {
+        infoDisplay.show(messageCenter.get(MessageKey.WIN.section, MessageKey.WIN.key));
+    }
+
+    private void displayLoseMessage() {
+        errorDisplay.show(messageCenter.get(MessageKey.ATTEMPTS_ARE_OVER.section, MessageKey.ATTEMPTS_ARE_OVER.key));
+        displayWrongLetters();
+        String revealedWord = hiddenWord.reveal();
+        String hiddenWordMessage = messageCenter.get(MessageKey.HIDDEN_WORD.section, MessageKey.HIDDEN_WORD.key);
+        infoDisplay.show(hiddenWordMessage + revealedWord);
+    }
+
+    private boolean isLose(Result result) {
+        return result == Result.LOSE;
+    }
+
+    private boolean isWin(Result result) {
+        return result == Result.WIN;
+    }
+
+    public enum Difficult {
+        EASY(8, new EasyHangmanPicture()), CLASSIC(6, new HangmanPicture());
+
+        public final int maxAttempts;
+        public final PictureProvider pictureProvider;
+
+        Difficult(int maxAttempts, PictureProvider pictureProvider) {
+            this.maxAttempts = maxAttempts;
+            this.pictureProvider = pictureProvider;
+        }
+    }
+
+    public enum Category {
+        NATURE("nature"),
+        COUNTRIES("countries"),
+        ANIMALS("animals"),
+        RANDOM("random");
+
+        private final String categoryName;
+
+        Category(String categoryName) {
+            this.categoryName = categoryName;
+        }
+        public String getCategoryName() {
+            return categoryName;
+        }
+    }
+
+    private enum Result {
+        WIN, LOSE
+    }
+
+    private enum MessageKey {
+        START("start"),
+        ATTEMPTS_ARE_OVER("attempts_are_over"),
+        WIN("win"),
+        NO_SUCH_LETTER_TEMPLATE("no_such_letter_template"),
+        LETTER_ALREADY_ENTERED("letter_already_entered"),
+        ERRORS("errors"),
+        LEFT_ATTEMPTS("left_attempts"),
+        HIDDEN_WORD("hidden_word");
+
+        public final String section = "HangmanSession";
+        public final String key;
+
+        MessageKey(String key) {
+            this.key = key;
+        }
+    }
+}
+
+HiddenWord
+public class HiddenWord {
+    private static final String PLACEHOLDER = "_";
+
+    private final String text;
+    private final StringBuilder mask;
+
+    public HiddenWord(String text) {
+        this.text = text.toUpperCase();
+        this.mask = createWordMask();
+    }
+
+    private StringBuilder createWordMask() {
+        String maskedWord = PLACEHOLDER.repeat(text.length());
+        return new StringBuilder(maskedWord);
+    }
+
+    public String revealLetter(String letter) {
+        String upperCaseLetter = letter.toUpperCase();
+        if (!text.contains(upperCaseLetter)) {
+            throw new NoSuchLetterException(upperCaseLetter);
+        }
+
+        if (isGuessed() || isLetterAlreadyRevealed(upperCaseLetter)) {
+            return mask.toString();
+        }
+
+        for (int i = 0; i < text.length(); i++) {
+            char ch = upperCaseLetter.charAt(0);
+            if (text.charAt(i) == ch) {
+                mask.setCharAt(i, ch);
+            }
+        }
+
+        return mask.toString();
+    }
+
+    private boolean isLetterAlreadyRevealed(String letter) {
+        return mask.toString().contains(letter);
+    }
+
+    public boolean isGuessed() {
+        return !mask.toString().contains(PLACEHOLDER);
+    }
+
+    public String reveal() {
+        return text;
+    }
+
+    public String getMask() {
+        return mask.toString();
+    }
+}
+
+inireader
+exception
+IniValueNotFoundException
+OpenIniFileException
+ReadIniFileException
+IniReader
+public class IniReader {
+    private final String fileName;
+    private INIConfiguration iniConfiguration;
+
+    public IniReader(String fileName) {
+        this.fileName = "/" + fileName;
+        loadIniConfiguration();
+    }
+
+    public String getValue(String section, String key) {
+        Object value = iniConfiguration.getSection(section).getProperty(key);
+        if (value == null) {
+            throw new IniValueNotFoundException(section, key);
+        }
+        return value.toString();
+    }
+
+    private void loadIniConfiguration() {
+        iniConfiguration = new INIConfiguration();
+        InputStream iniAsStream = getIniAsStream(fileName);
+        try (var reader = new BufferedReader(new InputStreamReader(iniAsStream))) {
+            iniConfiguration.read(reader);
+        } catch (IOException | ConfigurationException e) {
+            throw new ReadIniFileException(e);
+        }
+    }
+
+    private InputStream getIniAsStream(String filePath) {
+        InputStream resource = IniReader.class.getResourceAsStream(filePath);
+        if (resource == null) {
+            throw new OpenIniFileException(filePath);
+        }
+        return resource;
+    }
+}
+validator
+WordRepositoryValidator
+public class WordRepositoryValidator implements Validator<List<String>> {
+    private final AbstractLetterValidator letterValidator;
+
+    public WordRepositoryValidator(Language language) {
+        this.letterValidator = createValidator(language);
+    }
+
+    private AbstractLetterValidator createValidator(Language language) {
+        return switch (language) {
+            case RU -> new RuLetterValidator();
+            case EN -> new EnLetterValidator();
+        };
+    }
+
+    @Override
+    public void validate(List<String> words) {
+        if (words.isEmpty()) {
+            throw new EmptyWordListException();
+        }
+
+        for (String word : words) {
+            if (!isWord(word)) {
+                throw new InvalidWordException(word);
+            }
+        }
+    }
+
+    private boolean isWord(String line) {
+        for (int i = 0; i < line.length(); i++) {
+            char ch = line.charAt(i);
+            if (!letterValidator.isLetterInLanguage(ch)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+Main
+public class Main {
+    private static final String UNABLE_GET_LOCALIZATION_FILE = "Unable to get localization file";
+    private static final String LEAVING_THE_GAME = "Leaving the game...";
+    private static final String LANGUAGE_PATH_TEMPLATE = "lang/%s";
+
+    public static void main(String[] args) {
+        Display display = new InfoDisplay();
+        Language language = inputLanguage(display::show);
+
+        Optional<FileMessageCenter> messageCenterOptional =
+            getMessageCenter(LANGUAGE_PATH_TEMPLATE, "%s_messages.ini", language, display);
+        Optional<FileDialogCenter> dialogCenterOptional =
+            getDialogCenter(LANGUAGE_PATH_TEMPLATE, "%s_dialogs.ini", language, display);
+
+        if (messageCenterOptional.isPresent() && dialogCenterOptional.isPresent()) {
+            DialogCenter dialogCenter = dialogCenterOptional.get();
+            MessageCenter messageCenter = messageCenterOptional.get();
+
+            HangmanGameLauncher hangmanGameLauncher =
+                new HangmanGameLauncher(display, language, messageCenter, dialogCenter);
+            hangmanGameLauncher.start();
+        }
+    }
+
+    private static Optional<FileMessageCenter> getMessageCenter(
+        String directory,
+        String filenameTemplate,
+        Language language,
+        Display display
+    ) {
+        try {
+            return Optional.of(new FileMessageCenter(directory, filenameTemplate, language));
+        } catch (UnableGetMessageCenterException e) {
+            showErrorMessage(display);
+            return Optional.empty();
+        }
+    }
+
+    private static Optional<FileDialogCenter> getDialogCenter(
+        String directory,
+        String filenameTemplate,
+        Language language,
+        Display display
+    ) {
+        try {
+            return Optional.of(new FileDialogCenter(directory, filenameTemplate, language));
+        } catch (UnableGetDialogCenterException e) {
+            showErrorMessage(display);
+            return Optional.empty();
+        }
+    }
+
+    private static void showErrorMessage(Display display) {
+        display.show(UNABLE_GET_LOCALIZATION_FILE);
+        display.show(LEAVING_THE_GAME);
+    }
+
+    private static Language inputLanguage(Printer printer) {
+        String languageMessage = getLanguageMessage();
+        Dialog dialog = new LanguageDialog(printer, languageMessage);
+        String input = dialog.getInput();
+        return Language.valueOf(input.toUpperCase());
+    }
+
+    private static String getLanguageMessage() {
+        String message = Arrays.stream(Language.values())
+            .map(Enum::name)
+            .collect(Collectors.joining(", "));
+        return "Choose language: %s".formatted(message);
+    }
+}
+
+resources
+lang
+en
+ru
+words
+en
+ru
